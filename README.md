@@ -42,6 +42,20 @@ An Example Chat Room
 }
 ```
 
+An Example Private Message
+
+```javascript
+{
+  users: [ String ] //Array of usernames
+  messages: [
+    {
+    username: String, //User's username
+    message: String, //User's message
+    time: String //Time that the message was sent
+    }
+  ]
+}
+
 
 ## [Link to Commented First Draft Schema](db.js) 
 
