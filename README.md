@@ -74,17 +74,26 @@ An Example Private Message
 Home Page - Landing Page
 ![Home Page](documentation/home.jpg)
 
-/list/create - page for creating a new shopping list
+/Keys - Key generator page
+![Keys](documentation/keys.jpg)
 
-![list create](documentation/list-create.png)
+/Login - Login page
+![Login](documentation/login.jpg)
 
-/list - page for showing all shopping lists
+/Register - Register page
+![Register](documentation/register.jpg)
 
-![list](documentation/list.png)
+/Users - User search page
+![Users](documentation/user.jpg)
 
-/list/slug - page for showing specific shopping list
+/Direct - Direct Messaging Page with user lookup
+![Direct Message](documentation/direct-message.jpg)
 
-![list](documentation/list-slug.png)
+/Chat - Chat room lookup along with chat room create/delete
+![Chat](documentation/chat.jpg)
+
+/Chat/Room-Name - The select room's chat
+![Chat Room]<img src="documentation/room-name.jpg" alt="Drawing" style="width: 200px;"/>
 
 ## Site map
 
