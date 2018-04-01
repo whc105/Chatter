@@ -86,9 +86,7 @@ An Example Private Message
 
 ## Site map
 
-(___TODO__: draw out a site map that shows how pages are related to each other_)
-
-Here's a [complex example from wikipedia](https://upload.wikimedia.org/wikipedia/commons/2/20/Sitemap_google.jpg), but you can create one without the screenshots, drop shadows, etc. ... just names of pages and where they flow to.
+[Site Map](https://github.com/nyu-csci-ua-0480-008-spring-2018/whc309-final-project/blob/master/documentation/site-map.JPG)
 
 ## User Stories or Use Cases
 
