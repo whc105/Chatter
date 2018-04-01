@@ -20,8 +20,9 @@ An Example User:
 ```javascript
 {
   username: String,
-  password: String //Hashed Password,
+  password: String, //Hashed Password
   chatrooms: Int, //Chat Room IDs
+  email: String
 }
 ```
 
