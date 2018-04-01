@@ -20,4 +20,4 @@ app.get('*', (req, res) => {
 
 app.listen(config.PORT, function () {
 	console.log(`App currently running; navigate to localhost:${config.PORT} in a web browser.`);
-})
+});

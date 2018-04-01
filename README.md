@@ -102,25 +102,30 @@ Here's a [complex example from wikipedia](https://upload.wikimedia.org/wikipedia
 
 ## Research Topics
 
-(___TODO__: the research topics that you're planning on working on along with their point values... and the total points of research topics listed_)
+* (2 points) Bootstrap 4
+    * Bootstrap is a CSS Framework that will help speed up the front-end design building process.
+    * I am using Bootstrap because it has several components already designed so I do not have to build them myself.
+    * I will also be using addons to the default Bootstrap 4 to further customize my app.
+    * This will help with the general design of my web app.
+    * I give it 2 points because it is a popular CSS Framework. Also, I will include some configurations to it.
+* (5 points) ReactJS
+    * React JS is a front-end Javascript framework that allows web components to be seperated from the webpage.
+    * I am using React because I want the ability to reuse components and modify them without worrying about breaking the page.
+    * I give it 4 points because it is a popular front-end framework that is moderately difficult to pick up.
+* (4 Points) Passport JS User Authentication
+    * Passport JS is an user authentication middleware. It can authenticate users locally or through a service like Facebook or Google.
+    * I will be using passport JS to locally authenticate users.
+    * I will also be using passport JS to authenticate users via Google Login (instead of local login).
+    * I give it 4 points because I will be using local authentication along with Google.
+* (4 Points) Socket IO
+    * Socket IO is a real-time library. It will enable server side responses.
+    * I will use Socket IO for the live chat system.
+    * I will give it 4 points because it seems like a moderately tough system to implement.
+      * Furthermore, I think I need to move my database to MLab and include a live demo chat system (with Bots that say lorem ipsums).
 
-* (5 points) Integrate user authentication
-    * I'm going to be using passport for user authentication
-    * And account has been made for testing; I'll email you the password
-    * see <code>cs.nyu.edu/~jversoza/ait-final/register</code> for register page
-    * see <code>cs.nyu.edu/~jversoza/ait-final/login</code> for login page
-* (4 points) Perform client side form validation using a JavaScript library
-    * see <code>cs.nyu.edu/~jversoza/ait-final/my-form</code>
-    * if you put in a number that's greater than 5, an error message will appear in the dom
-* (5 points) vue.js
-    * used vue.js as the frontend framework; it's a challenging library to learn, so I've assigned it 5 points
-
-10 points total out of 8 required points (___TODO__: addtional points will __not__ count for extra credit_)
-
+15 points total out of 8 required points.
 
 ## [Link to Initial Main Project File](app.js) 
-
-(___TODO__: create a skeleton Express application with a package.json, app.js, views folder, etc. ... and link to your initial app.js_)
 
 ## Annotations / References Used
 
