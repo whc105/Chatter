@@ -86,7 +86,7 @@ An Example Private Message
 
 ## Site map
 
-[Site Map](https://github.com/nyu-csci-ua-0480-008-spring-2018/whc309-final-project/blob/master/documentation/site-map.JPG)
+![Site Map](https://github.com/nyu-csci-ua-0480-008-spring-2018/whc309-final-project/blob/master/documentation/site-map.JPG)
 
 ## User Stories or Use Cases
 
