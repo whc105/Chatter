@@ -21,7 +21,7 @@ An Example User:
 {
   username: String,
   password: String //Hashed Password,
-  chatrooms: Int, //Chat Room IDs
+  chatrooms: [ Number ], //Chat Room IDs
 }
 ```
 
@@ -30,7 +30,7 @@ An Example Chat Room
 ```javascript
 {
   name: String, //Chat Room name
-  id: Int, //Chat Room ID
+  id: Number, //Chat Room ID
   users: [ String ] //Array of usernames
   messages: [
     {
@@ -51,7 +51,7 @@ An Example Private Message
     {
     username: String, //User's username
     message: String, //User's message
-    time: String //Time that the message was sent
+    time: Date //Time that the message was sent
     }
   ]
 }
@@ -119,7 +119,4 @@ Here's a [complex example from wikipedia](https://upload.wikimedia.org/wikipedia
 
 ## Annotations / References Used
 
-(___TODO__: list any tutorials/references/etc. that you've based your code off of_)
-
-1. [passport.js authentication docs](http://passportjs.org/docs) - (add link to source code that was based on this)
-2. [tutorial on vue.js](https://vuejs.org/v2/guide/) - (add link to source code that was based on this)
+1. [React/Express Boilerplate](https://github.com/nathandalal/react-express-template.git)
