@@ -8,7 +8,8 @@ const UserSchema = new Schema({
     username: {type: String, unique: true}, //Username and passwords are required for authentication
     password: {type: String, unique: true, required: true}, //Passwords are hashed
     chatrooms: [ Number ], //Stores the list of chat rooms that the user is in
-    email: String //Email for authentication
+    email: String, //Email for authentication
+    permission: Number //User's permission level
 });
 
 //Chatroom
@@ -36,7 +37,8 @@ const PrivateRoomSchema = new Schema({
 //Signup requires an unique key.
 //When a key is used, it will be deleted.
 const KeySchema = new Schema({
-    key: {type: String, unique: true} //Keys are NOT hashed
+    key: {type: String, unique: true}, //Keys are NOT hashed
+    type: String //Type of key. Either 'register' or chatroom id
 });
 
 //Currently unsure if slugs are necessary

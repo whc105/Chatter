@@ -20,8 +20,10 @@ An Example User:
 ```javascript
 {
   username: String,
-  password: String //Hashed Password,
+  password: String, //Hashed Password,
   chatrooms: [ Number ], //Chat Room IDs
+  email: String,
+  permission: Number //User's permission level
 }
 ```
 
@@ -57,10 +59,14 @@ An Example Private Message
 }
 ```
 
+```javascript
+{
+  key: String, //An unhashed key used for login
+  type: String //Type of key. Either login or the chatroom ID
+}
+```
 
 ## [Link to Commented First Draft Schema](db.js) 
-
-(___TODO__: create a first draft of your Schemas in db.js and link to it_)
 
 ## Wireframes
 
@@ -86,14 +92,13 @@ Here's a [complex example from wikipedia](https://upload.wikimedia.org/wikipedia
 
 ## User Stories or Use Cases
 
-(___TODO__: write out how your application will be used through [user stories](http://en.wikipedia.org/wiki/User_story#Format) and / or [use cases](https://www.mongodb.com/download-center?jmp=docs&_ga=1.47552679.1838903181.1489282706#previous)_)
-
-1. as non-registered user, I can register a new account with the site
-2. as a user, I can log in to the site
-3. as a user, I can create a new grocery list
-4. as a user, I can view all of the grocery lists I've created in a single list
-5. as a user, I can add items to an existing grocery list
-6. as a user, I can cross off items in an existing grocery list
+1. As a non-registered user, I can register a new account with the site.
+2. As an user, I can log in to the site.
+3. As an user, I can send/view messages to rooms I have access to.
+4. As an user, I can send/view direct messages to other users.
+6. As an administrator, I can create keys for users to gain access to rooms.
+7. As an administrator, I can kick users out of rooms.
+8. As an administrator, I can create/delete chatrooms.
 
 ## Research Topics
 
