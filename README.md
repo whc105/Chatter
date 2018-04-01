@@ -72,7 +72,7 @@ An Example Private Message
 ## Wireframes
 
 Home Page - Landing Page
-![Home Page](documentation/home.jpgs)
+![Home Page](documentation/home.jpg)
 
 /list/create - page for creating a new shopping list
 
