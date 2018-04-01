@@ -59,15 +59,17 @@ An Example Private Message
 }
 ```
 
+An Example Key
+
 ```javascript
 {
-  key: String, //An unhashed key used for login
+  key: String, //An unhashed key used for registration or chatroom access
   type: String, //Type of key. Either login or the chatroom ID
   uses: Number //Number of uses for the key
 }
 ```
 
-## [Link to Commented First Draft Schema](db.js) 
+## [First Draft Schema](db.js) 
 
 ## Wireframes
 
@@ -134,7 +136,7 @@ Home Page - Landing Page
 
 15 points total out of 8 required points.
 
-## [Link to Initial Main Project File](app.js) 
+## [Initial Main Project File](app.js) 
 
 ## Annotations / References Used
 
