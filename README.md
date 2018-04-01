@@ -62,7 +62,8 @@ An Example Private Message
 ```javascript
 {
   key: String, //An unhashed key used for login
-  type: String //Type of key. Either login or the chatroom ID
+  type: String, //Type of key. Either login or the chatroom ID
+  uses: Number //Number of uses for the key
 }
 ```
 

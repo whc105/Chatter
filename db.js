@@ -36,9 +36,11 @@ const PrivateRoomSchema = new Schema({
 
 //Signup requires an unique key.
 //When a key is used, it will be deleted.
+//Only System admins can generate admin keys
 const KeySchema = new Schema({
     key: {type: String, unique: true}, //Keys are NOT hashed
-    type: String //Type of key. Either 'register' or chatroom id
+    type: String, //Type of key. Either 'register' or chatroom id
+    uses: Number //Number of uses for the key
 });
 
 //Currently unsure if slugs are necessary
