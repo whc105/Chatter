@@ -8,36 +8,37 @@ Ever wanted a live group chat for the class you are enrolled? Well now there is 
 
 ## Data Model
 
-(___TODO__: a description of your application's data and their relationships to each other_) 
+The application will store Users, Chat Room, and Private Message
 
-The application will store Users, Lists and Items
-
-* users can have multiple lists (via references)
-* each list can have multiple items (by embedding)
-
-(___TODO__: sample documents_)
+* Users can be in multiple Chat Rooms (By reference).
+* Users can be in multiple Private Messages (By reference).
+* Every Chatroom will contain a list of username (By Reference).
+* Every Private Message will contain 2 username (By Reference).
 
 An Example User:
 
 ```javascript
 {
-  username: "shannonshopper",
-  hash: // a password hash,
-  lists: // an array of references to List documents
+  username: String,
+  password: String //Hashed Password,
+  chatrooms: Int, //Chat Room IDs
 }
 ```
 
-An Example List with Embedded Items:
+An Example Chat Room
 
 ```javascript
 {
-  user: // a reference to a User object
-  name: "Breakfast foods",
-  items: [
-    { name: "pancakes", quantity: "9876", checked: false},
-    { name: "ramen", quantity: "2", checked: true},
-  ],
-  createdAt: // timestamp
+  name: String, //Chat Room name
+  id: Int, //Chat Room ID
+  users: [ String ] //Array of usernames
+  messages: [
+    {
+    username: String, //User's username
+    message: String, //User's message
+    time: String //Time that the message was sent
+    }
+  ]
 }
 ```
 
