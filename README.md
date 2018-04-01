@@ -57,6 +57,12 @@ An Example Private Message
 }
 ```
 
+An Example Key
+```javascript
+{
+  key: String
+}
+```
 
 ## [Link to Commented First Draft Schema](db.js) 
 
