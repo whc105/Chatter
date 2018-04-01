@@ -93,7 +93,7 @@ Home Page - Landing Page
 ![Chat](documentation/chat.jpg)
 
 /Chat/Room-Name - The select room's chat
-![Chat Room]<img src="documentation/room-name.jpg" alt="Drawing" style="width: 200px;"/>
+![Chat Room](documentation/room-name.jpg)
 
 ## Site map
 
