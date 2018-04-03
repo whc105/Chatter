@@ -7,6 +7,8 @@ import Navbar from './components/navbar/navbar.jsx';
 import Login from './components/login/login.jsx';
 import Register from './components/register/register.jsx';
 
+import './index.css';
+
 class Index extends React.Component {
   constructor(props) {
     super(props);

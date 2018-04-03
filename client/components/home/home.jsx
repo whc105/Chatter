@@ -1,4 +1,5 @@
 import React from 'react';
+import './home.css';
 
 export default class Home extends React.Component {
   constructor(props) {
@@ -6,11 +7,22 @@ export default class Home extends React.Component {
   }
   render() {
     return ( 
-      <div className="content">
-        <h3>Welcome to CHATTER</h3>
-        <h4>The structure of this template is shown below.</h4>
+      <div className='content'>
+        <div id='intro-content'>
+          <span className='welcome-title'>Welcome to Chatter</span>
+          <br/>
+          <br/>
+          <p className='lead'>
+            Chatting with other people in your class
+          </p>
+          <p className='lead'>
+            Connecting with other people in your class
+          </p>
+          <p className='lead'>
+            Working with other people in your class
+          </p>
+        </div>
       </div>
     );
   }
-  
 }

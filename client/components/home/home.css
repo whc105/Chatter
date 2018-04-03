@@ -1,0 +1,15 @@
+#intro-content {
+    padding-top: 200px;
+    width: 500px;
+}
+
+.welcome-title {
+    line-height: 1.2;
+    font-size: 3rem;
+    font-weight: 300;
+    color: white;
+}
+
+.lead {
+    color: white;
+}
