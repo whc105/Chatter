@@ -10,6 +10,7 @@ const flash = require('connect-flash');
 
 //Routes
 const login = require('./routes/login');
+const register = require('./routes/register');
 
 const userAPI = require('./api/currentUser');
 
@@ -40,6 +41,7 @@ userAPI(app);
 
 //Routes
 app.use('/login', login);
+app.use('/register', register);
 
 app.get('*', (req, res) => {
 	res.render('pages/index', {

@@ -1,6 +1,7 @@
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const GoogleStrategy = require('passport-google-oauth20');
+const bcrypt = require('bcryptjs');
 const mongoose = require('mongoose');
 
 require('../db');
@@ -23,13 +24,21 @@ passport.deserializeUser((id, done)=> {
 
 passport.use(new LocalStrategy(
     (username, password, done)=> {
-        User.findOne({username: username, password: password}, (err, user)=> {
+        User.findOne({username: username}, (err, user)=> {
             if (err) {
                 done(err);
             } else if (!user) {
                 return done(null, false);
             } else {
-                return done(null, user);
+                bcrypt.compare(password, user.password, (err, passwordMatch)=> {
+                    if (err) {
+                        console.log(err);
+                    } else if (passwordMatch) {
+                        return done(null, user);
+                    } else {
+                        return done(null, false);
+                    }
+                });
             }
         });
     }
