@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.schema;
+const Schema = mongoose.Schema;
 const IP = process.env.IP || 'localhost';
-const mongoURI = `mongodb://${IP}/hw06`;
+const mongoURI = `mongodb://${IP}/chatter`;
 
 //Users
 const UserSchema = new Schema({
@@ -9,7 +9,7 @@ const UserSchema = new Schema({
     password: {type: String, unique: true, required: true}, //Passwords are hashed
     chatrooms: [ Number ], //Stores the list of chat rooms that the user is in
     email: String, //Email for authentication
-    permission: Number //User's permission level
+    permission: Number //User's permission level. If no key is entered, it will be a student.
 });
 
 //Chatroom

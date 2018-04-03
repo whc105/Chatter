@@ -9,3 +9,8 @@
     font-weight: 300;
     color: white;
 }
+
+#login-error {
+    color: white;
+    padding-bottom: 5px;
+}
