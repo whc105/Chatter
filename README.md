@@ -141,3 +141,4 @@ Home Page - Landing Page
 ## Annotations / References Used
 
 1. [React/Express Boilerplate](https://github.com/nathandalal/react-express-template.git)
+2. [Bootstrap 4 Doc](https://getbootstrap.com/docs/4.0/getting-started/introduction)

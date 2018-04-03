@@ -1,8 +1,11 @@
-import React from 'react'
-import { render } from 'react-dom'
-import { BrowserRouter as Router, Switch, Route, Redirect, Link } from 'react-router-dom'
+import React from 'react';
+import { render } from 'react-dom';
+import { BrowserRouter as Router, Switch, Route, Redirect, Link } from 'react-router-dom';
 
-import Home from './components/home.jsx'
+import Home from './components/home/home.jsx';
+import Navbar from './components/navbar/navbar.jsx';
+import Login from './components/login/login.jsx';
+import Register from './components/register/register.jsx';
 
 class Index extends React.Component {
   constructor(props) {
@@ -11,25 +14,23 @@ class Index extends React.Component {
 
   render() {
     let routes = [
-      { path: "/",           name: "Home",        btnType: "primary",   component: Home },
+      { path: '/', name: 'Home', component: Home },
+      { path: '/login', name: 'Login', component: Login },
+      { path: '/register', name: 'Register', component: Register },
     ];
 
     return (
       <Router>
-        <div style={{padding: "5%"}}>
-        <Switch>
+        <div style={{padding: '7%'}}>
+          <Navbar/>
+          <Switch>
             {routes.map(route => <Route exact path={route.path} component={route.component} key={route.path} />)}
-            <Redirect to ="/"/>
+            <Redirect to ='/'/>
           </Switch>
-          <div className="block">
-            {routes.map(
-              route => <Link to={route.path} className={`button is-${route.btnType}`} key={route.path}>{route.name}</Link>
-            )}
-          </div>
         </div>
       </Router>
-    )
+    );
   }
 }
 
-render(<Index />, document.getElementById('app'))
+render(<Index />, document.getElementById('app'));

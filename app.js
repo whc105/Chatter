@@ -3,7 +3,6 @@ const engines = require('consolidate');
 const config = require('./config');
 const logger = require('morgan');
 const mongoose = require('mongoose');
-
 const app = express();
 
 app.engine('njk', engines.nunjucks);
