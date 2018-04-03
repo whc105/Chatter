@@ -27,6 +27,7 @@ export default class Navbar extends React.Component {
 						<span className='navbar-toggler-icon'></span>
 					</button>
 					<div className='collapse navbar-collapse' id='navbarNavDropdown'>
+						<ChatButtons/>
 						<AuthButtons userData={this.state.user}/>
 					</div>
 				</nav>
@@ -52,4 +53,17 @@ function AuthButtons(props) {
 			</ul>
 		);
 	}
+}
+
+function ChatButtons(props) {
+	return (
+		<ul className='navbar-nav ml-auto'>
+			<li className='nav-item'>
+				<Link to='/chat' className='nav-link bttn-bordered bttn-sm bttn-default animated fadeIn' id='chat'>Chat</Link>
+			</li>
+			<li className='nav-item'>
+				<Link to='/direct' className='nav-link bttn-bordered bttn-sm bttn-default animated fadeIn' id='direct'>Direct Message</Link>
+			</li>
+		</ul>
+	);
 }

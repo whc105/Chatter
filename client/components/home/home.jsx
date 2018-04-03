@@ -9,7 +9,7 @@ export default class Home extends React.Component {
     return ( 
       <div className='content'>
         <div id='intro-content'>
-          <span className='welcome-title'>Welcome to Chatter</span>
+          <span className='welcome-title'>Welcome to Chatter </span>
           <br/>
           <br/>
           <p className='lead'>

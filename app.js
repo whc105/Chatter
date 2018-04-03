@@ -44,9 +44,7 @@ app.use('/login', login);
 app.use('/register', register);
 
 app.get('*', (req, res) => {
-	res.render('pages/index', {
-		appname: config.APPNAME
-	});
+	res.render('pages/index');
 });
 
 
