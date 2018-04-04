@@ -21,3 +21,8 @@
 .modal-body {
     color: white;
 }
+
+#search {
+    padding-top: 30px;
+    width: 400px;
+}

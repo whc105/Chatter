@@ -14,6 +14,7 @@ const register = require('./routes/register');
 const chat = require('./routes/chat');
 
 const userAPI = require('./api/currentUser');
+const roomAPI = require('./api/rooms');
 
 const app = express();
 require('./db');
@@ -39,6 +40,7 @@ app.use(passport.session());
 
 //APIs
 userAPI(app);
+roomAPI(app);
 
 //Routes
 app.use('/login', login);

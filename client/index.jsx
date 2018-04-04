@@ -21,8 +21,8 @@ class Index extends React.Component {
       { path: '/', name: 'Home', component: Home },
       { path: '/login', name: 'Login', component: Login },
       { path: '/register', name: 'Register', component: Register },
-      { path: '/chat', name:'Chat', component: Chat},
-      { path: '/direct', name: 'DirectMessage', component: DirectMessage},
+      { path: '/chat', name:'Chat', component: Chat },
+      { path: '/direct', name: 'DirectMessage', component: DirectMessage },
     ];
 
     return (
