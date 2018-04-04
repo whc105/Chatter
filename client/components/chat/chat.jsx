@@ -5,6 +5,18 @@ import './chat.css';
 export default class Chat extends React.Component {
 	constructor(props) {
 		super(props);
+		this.createRoom = this.createRoom.bind(this);
+	}
+	
+	createRoom() {
+		const refs = this.refs;
+		axios.post('/chat/make-room', {
+			name: refs.rmName.value
+		}).then((res)=> {
+			if (true) {
+				window.location = '../chat';
+			}
+		});
 	}
 	
 	render() {
@@ -19,11 +31,20 @@ export default class Chat extends React.Component {
 									<h5 className='modal-title' id='create-room-label'>Create A Room</h5>
 								</div>
 								<div className='modal-body'>
-									Placeholder for creating room form
+									<form className='form-group'>
+										<div className='input-group'>
+											<div className='input-group-prepend'>
+												<label className='input-group-text' htmlFor='input-group-rm-name'>
+													<i className='fas fa-warehouse'></i>
+												</label>
+											</div>
+											<input id='input-group-rm-name' type='text' placeholder='Room Name' ref='rmName'/>
+										</div>
+									</form>
 								</div>
 								<div className='modal-footer'>
 									<button type='button' className='btn btn-secondary' data-dismiss='modal'>Close</button>
-									<button type='button' className='btn btn-primary'>Save changes</button>
+									<button onClick={this.createRoom} type='button' className='btn btn-primary'>Create Room</button>
 								</div>
 							</div>
 						</div>

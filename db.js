@@ -1,7 +1,10 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const autoIncrement = require('mongoose-auto-increment');
 const IP = process.env.IP || 'localhost';
 const mongoURI = `mongodb://${IP}/chatter`;
+
+const connection = mongoose.createConnection(mongoURI);
 
 //Users
 const UserSchema = new Schema({
@@ -51,3 +54,7 @@ mongoose.model('Privateroom', PrivateRoomSchema);
 mongoose.model('Key', KeySchema);
 
 mongoose.connect(mongoURI);
+
+autoIncrement.initialize(connection);
+
+ChatRoomSchema.plugin(autoIncrement.plugin, {model: 'Chatroom', field: 'id'});
