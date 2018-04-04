@@ -6,6 +6,8 @@ import Home from './components/home/home.jsx';
 import Navbar from './components/navbar/navbar.jsx';
 import Login from './components/login/login.jsx';
 import Register from './components/register/register.jsx';
+import Chat from './components/chat/chat.jsx';
+import DirectMessage from './components/direct/direct.jsx';
 
 import './index.css';
 
@@ -19,6 +21,8 @@ class Index extends React.Component {
       { path: '/', name: 'Home', component: Home },
       { path: '/login', name: 'Login', component: Login },
       { path: '/register', name: 'Register', component: Register },
+      { path: '/chat', name:'Chat', component: Chat},
+      { path: '/direct', name: 'DirectMessage', component: DirectMessage},
     ];
 
     return (
