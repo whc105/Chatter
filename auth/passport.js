@@ -32,7 +32,7 @@ passport.use(new LocalStrategy(
             } else {
                 bcrypt.compare(password, user.password, (err, passwordMatch)=> {
                     if (err) {
-                        console.log(err);
+                        return done(null);
                     } else if (passwordMatch) {
                         return done(null, user);
                     } else {

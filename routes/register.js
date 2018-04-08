@@ -6,11 +6,11 @@ const bcrypt = require('bcryptjs');
 require('../db');
 const User = mongoose.model('User');
 
-router.post('/', (req, res, next)=> {
+router.post('/', (req, res)=> {
     req.body.permission = 0;
     User.findOne({$or: [{username: req.body.username}, {email: req.body.email}]}, (err, user)=> {
         if (err) {
-            console.log(err);
+            res.send(err);
         } else if (user) {
             res.send(false);
         } else {
@@ -19,7 +19,7 @@ router.post('/', (req, res, next)=> {
                 req.body.password = hash;
                 new User(req.body).save((err)=> {
                     if (err) {
-                        console.log(err);
+                        res.send(err);
                     } else {
                         res.send(true);
                     }

@@ -108,7 +108,7 @@ class Search extends React.Component {
 		});
 	}
 	
-	renderList() {
+	mapToDropdown() {
 		let key = 0;
 		const rooms = this.state.rooms;
 		const query = this.state.query.toLowerCase();
@@ -120,18 +120,18 @@ class Search extends React.Component {
 		});
 		const mapToComponent = filterRooms.slice(0, 6).map((room)=> {
 			key++;
-			return <li className='list-group-item' key={key}>{room.name}</li>;
+			return <li className='list-group-item' key={key}>{room.name}<span className='room-id'>{room.id}</span></li>;
 		});
 		return mapToComponent;
 	}
 	
 	render() {
-		const renderList = this.renderList();
+		const mapToDropdown = this.mapToDropdown();
 		return(
 			<div>
 				<ul className='list-group'>
 					<input text='text' className='list-group-item' placeholder='Search For Room' onChange={this.liveSearch}/>
-					{renderList}
+					{mapToDropdown}
 				</ul>
 			</div>
 		);

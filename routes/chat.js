@@ -8,7 +8,7 @@ const Chatroom = mongoose.model('Chatroom');
 router.post('/make-room', (req, res)=> {
     new Chatroom(req.body).save((err)=> {
         if (err) {
-            console.log(err);
+            res.send(err);
         } else {
             res.send(true);
         }
