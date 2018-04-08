@@ -1,0 +1,12 @@
+#search {
+    padding-top: 30px;
+    width: 400px;
+}
+
+.room-id {
+    float: right;
+}
+
+input:focus {
+    outline: none;
+}

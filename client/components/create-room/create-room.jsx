@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import './create-room.css';
 
 export default class CreateRoom extends React.Component {
 	constructor(props) {
