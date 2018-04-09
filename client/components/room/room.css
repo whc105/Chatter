@@ -1,0 +1,23 @@
+#rm-name {
+    text-align: center;
+    color: #f0eeec;
+}
+
+#rm-id {
+    float: right;
+}
+
+#rm-users {
+    width: 20%;
+    display: inline-block;
+}
+
+.list-group-item {
+    background: none;
+    border-color: #f0eeec;
+    color: #f0eeec;
+}
+
+#join {
+    float: right;
+}

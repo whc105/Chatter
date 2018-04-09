@@ -1,30 +1,58 @@
 import React from 'react';
 import axios from 'axios';
-
+import JoinRoom from '../join-room/join-room.jsx';
 import './room.css';
 
 export default class Room extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			params: props.match.params.id
+			roomData: []
 		};
 	}
 	
 	componentWillMount() {
 		axios.get('/api/getRoom', {
 			params: {
-				id: this.state.params
+				id: this.props.match.params.id
 			}
 		}).then(({data})=> {
-			console.log(data);
+			this.setState({roomData: data});
 		});
 	}
 	
+	generateUserList() {
+		const roomUsers = (this.state.roomData.users) ? this.state.roomData.users : [];
+		
+		const mapUserToList = roomUsers.map((user)=> {
+			return (
+				<li className='list-group-item'>There are {user} users</li>
+			);
+		});
+		return mapUserToList;
+	}
+	
 	render() {
-		console.log(this.state.params);
+		const roomName = this.state.roomData.name;
+		const roomID = this.state.roomData.id;
+		const roomUsers = (this.state.roomData.users) ? this.state.roomData.users : [];
+		
+		const generateUserList = this.generateUserList();
 		return(
-			<div>DATAA</div>
+			<div>
+				<div id='rm-name'>
+					{roomName}
+					<span id='rm-id'>ID: {roomID}</span>
+				</div>
+				<hr/>
+				<div id='rm-users'>
+					<ul className='list-group'>
+						<li className='list-group-item'>There are {roomUsers.length} users</li>
+						{generateUserList}
+					</ul>
+				</div>
+				<JoinRoom/>
+			</div>
 		);
 	}
 }
