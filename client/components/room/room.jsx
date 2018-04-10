@@ -26,7 +26,7 @@ export default class Room extends React.Component {
 		
 		const mapUserToList = roomUsers.map((user)=> {
 			return (
-				<li className='list-group-item'>There are {user} users</li>
+				<li className='list-group-item' key={user}>User: {user}</li>
 			);
 		});
 		return mapUserToList;
@@ -51,7 +51,7 @@ export default class Room extends React.Component {
 						{generateUserList}
 					</ul>
 				</div>
-				<JoinRoom/>
+				<JoinRoom roomID={roomID}/>
 			</div>
 		);
 	}

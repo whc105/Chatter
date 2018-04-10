@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 
 require('../db');
 const Chatroom = mongoose.model('Chatroom');
+const User = mongoose.model('User');
 
 module.exports = app => {
     app.get('/api/getAllRooms', (req, res)=> {
@@ -22,5 +23,28 @@ module.exports = app => {
                 res.send(room);
             }
         });
+    });
+    
+    app.post('/api/joinRoom', (req, res)=> {
+        if (req.user && !req.user.chatrooms.includes(req.body.roomID)) {
+            Chatroom.update({id: req.body.roomID}, {$push: {users: req.user.username}},
+            (err)=> {
+                if (err) {
+                    res.send(err);
+                } else {
+                    User.update({username: req.user.username}, {$push: {chatrooms: req.body.roomID}},
+                        (err)=> {
+                            if (err) {
+                                res.send(err);
+                            } else {
+                                res.send(true);
+                            }
+                        }
+                    );
+                }
+            });
+        } else {
+            res.send(false);
+        }
     });
 };
