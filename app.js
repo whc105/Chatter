@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 const bodyParser = require('body-parser');
 const flash = require('connect-flash');
+const path = require('path');
 
 //Config Keys
 const config = require('./config/config');
@@ -30,6 +31,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(flash());
+app.use('/dist', express.static(path.join(__dirname, 'dist')));
 
 //Session and Passport JS
 require('./auth/passport');
