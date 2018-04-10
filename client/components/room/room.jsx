@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
-import JoinRoom from '../join-room/join-room.jsx';
+import JoinRoom from '../room-entry/join-room/join-room.jsx';
+import LeaveRoom from '../room-entry/leave-room/leave-room.jsx';
 import './room.css';
 
 export default class Room extends React.Component {
@@ -52,6 +53,7 @@ export default class Room extends React.Component {
 					</ul>
 				</div>
 				<JoinRoom roomID={roomID}/>
+				<LeaveRoom roomID={roomID}/>
 			</div>
 		);
 	}

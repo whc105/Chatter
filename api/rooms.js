@@ -47,4 +47,27 @@ module.exports = app => {
             res.send(false);
         }
     });
+    
+    app.post('/api/leaveRoom', (req, res)=> {
+        if (req.user.chatrooms.includes(req.body.roomID)) {
+            Chatroom.update({id: req.body.roomID}, {$pull: {users: req.user.username}},
+            (err)=> {
+                if (err) {
+                    res.send(err);
+                } else {
+                    User.update({username: req.user.username}, {$pull: {chatrooms: req.body.roomID}},
+                    (err)=> {
+                        if (err) {
+                            res.send(err);
+                        } else {
+                            console.log(req.body.roomID)
+                            res.send(true);
+                        }
+                    });
+                }
+            });
+        } else {
+            res.send(false);
+        }
+    });
 };
