@@ -4,3 +4,4 @@
 /node_modules
 /public/bundle.js
 /config/.devKeys.js
+/config/.prodKeys.js

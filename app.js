@@ -1,17 +1,20 @@
 const express = require('express');
 const session = require('express-session');
 const engines = require('consolidate');
-const config = require('./config/config');
 const logger = require('morgan');
 const mongoose = require('mongoose');
 const passport = require('passport');
 const bodyParser = require('body-parser');
 const flash = require('connect-flash');
 
+//Config Keys
+const config = require('./config/config');
+
 //Routes
 const login = require('./routes/login');
 const register = require('./routes/register');
 const chat = require('./routes/chat');
+
 
 const userAPI = require('./api/currentUser');
 const roomAPI = require('./api/rooms');

@@ -2,8 +2,10 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const autoIncrement = require('mongoose-auto-increment');
 const IP = process.env.IP || 'localhost';
-const mongoURI = `mongodb://${IP}/chatter`;
+const mongoURI = require('./config/config').KEYS.mongoURI;
 
+//Local mongoURI
+//const mongoURI = `mongodb://${IP}/chatter`;
 const connection = mongoose.createConnection(mongoURI);
 
 //Users
