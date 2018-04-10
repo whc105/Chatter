@@ -11,13 +11,12 @@ const flash = require('connect-flash');
 const config = require('./config/config');
 
 //Routes
-const login = require('./routes/login');
 const register = require('./routes/register');
 const chat = require('./routes/chat');
 
-
 const userAPI = require('./api/currentUser');
 const roomAPI = require('./api/rooms');
+const authAPI = require('./auth/authRoutes');
 
 const app = express();
 require('./db');
@@ -44,9 +43,9 @@ app.use(passport.session());
 //APIs
 userAPI(app);
 roomAPI(app);
+authAPI(app);
 
 //Routes
-app.use('/login', login);
 app.use('/register', register);
 app.use('/chat', chat);
 

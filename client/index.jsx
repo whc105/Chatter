@@ -16,7 +16,6 @@ class Index extends React.Component {
   constructor(props) {
     super(props);
   }
-
   render() {
     let routes = [
       { path: '/', name: 'Home', component: Home },

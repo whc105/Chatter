@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 export default class Navbar extends React.Component {
 	constructor(props) {
 		super(props);
+		this.activateLogout = this.activateLogout.bind(this);
 		this.state = {
 			user: ''
 		};
@@ -18,6 +19,15 @@ export default class Navbar extends React.Component {
 			}
 		});
 	}
+	activateLogout() {
+		axios.get('/auth/logout')
+		.then(({data})=> {
+			if (data) {
+				window.location = '/';
+			}
+		});
+	}
+	
 	render() {
 		return (
 			<div>
@@ -28,7 +38,7 @@ export default class Navbar extends React.Component {
 					</button>
 					<div className='collapse navbar-collapse' id='navbarNavDropdown'>
 						<ChatButtons/>
-						<AuthButtons userData={this.state.user}/>
+						<AuthButtons userData={this.state.user} activateLogout={this.activateLogout}/>
 					</div>
 				</nav>
 			</div>
@@ -37,9 +47,14 @@ export default class Navbar extends React.Component {
 }
 
 function AuthButtons(props) {
+	console.log(props.userData)
 	if (props.userData) {
 		return (
-			<div></div>
+			<ul className='navbar-nav ml-auto'>
+				<li className='nav-item'>
+					<button onClick={props.activateLogout} className='nav-link bttn-bordered bttn-sm bttn-default animated fadeIn' id='login'>Logout</button>
+				</li>
+			</ul>
 		);
 	} else {
 		return (

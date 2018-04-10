@@ -15,4 +15,4 @@ function checkLogin(req, res, next) {
 module.exports = {
     checkVisitor: checkVisitor,
     checkLogin: checkLogin
-}
+};

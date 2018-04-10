@@ -23,7 +23,7 @@ export default class Login extends React.Component {
   
   login() {
     const refs = this.refs;
-    axios.post('/login', {
+    axios.post('/auth/login', {
       username: refs.username.value, password: refs.password.value
     }).then((res)=> {
       if (res.data !== true) {
