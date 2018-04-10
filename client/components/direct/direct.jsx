@@ -9,6 +9,7 @@ export default class DirectMessage extends React.Component {
 	render() {
 		return (
 			<div>
+				THIS IS A DIRECT MSG
 			</div>
 		);
 	}

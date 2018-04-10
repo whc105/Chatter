@@ -4,7 +4,7 @@ const autoIncrement = require('mongoose-auto-increment');
 const IP = process.env.IP || 'localhost';
 const mongoURI = require('./config/config').KEYS.mongoURI;
 
-//Local mongoURI
+//Local mongoURI Remove
 //const mongoURI = `mongodb://${IP}/chatter`;
 const connection = mongoose.createConnection(mongoURI);
 
@@ -47,8 +47,6 @@ const KeySchema = new Schema({
     type: String, //Type of key. Either 'register' or chatroom id
     uses: Number //Number of uses for the key
 });
-
-//Currently unsure if slugs are necessary
 
 mongoose.model('User', UserSchema);
 mongoose.model('Chatroom', ChatRoomSchema);
