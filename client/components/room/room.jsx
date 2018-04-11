@@ -10,6 +10,7 @@ export default class Room extends React.Component {
 		this.state = {
 			roomData: []
 		};
+		this.renderNewList = this.renderNewList.bind(this);
 	}
 	
 	componentWillMount() {
@@ -33,6 +34,16 @@ export default class Room extends React.Component {
 		return mapUserToList;
 	}
 	
+	renderNewList() {
+		axios.get('/api/getRoom', {
+			params: {
+				id: this.props.match.params.id
+			}
+		}).then(({data})=> {
+			this.setState({roomData: data});
+		});
+	}
+	
 	render() {
 		const roomName = this.state.roomData.name;
 		const roomID = this.state.roomData.id;
@@ -52,8 +63,8 @@ export default class Room extends React.Component {
 						{generateUserList}
 					</ul>
 				</div>
-				<JoinRoom roomID={roomID}/>
-				<LeaveRoom roomID={roomID}/>
+				<JoinRoom renderNewList={this.renderNewList} roomID={roomID}/>
+				<LeaveRoom renderNewList={this.renderNewList} roomID={roomID}/>
 			</div>
 		);
 	}

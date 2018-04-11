@@ -8,7 +8,7 @@ export default class LeaveRoom extends React.Component {
 		this.state = {
 			roomID: ''
 		};
-		this.leaveRoom = this.leaveRoom.bind(this);
+		this.handleClick = this.handleClick.bind(this);
 	}
 	
 	componentWillReceiveProps(props) {
@@ -16,19 +16,24 @@ export default class LeaveRoom extends React.Component {
 			roomID: props.roomID
 		});
 	}
+	
 	leaveRoom() {
 		axios.post('/api/leaveRoom', {
 			roomID: this.state.roomID
 		}).then(({data})=> {
-			if (data) {
-				window.location = '/';
-			}
+			console.log(data);
 		});
 	}
+	
+	handleClick() {
+		this.leaveRoom();
+		this.props.renderNewList();
+	}
+	
 	render() {
 		return(
 			<div id='leave'>
-				<button onClick={this.leaveRoom} className='bttn-unite bttn-md bttn-default bttn-no-outline' id='leave-bttn'>Leave Room</button>
+				<button onClick={this.handleClick} className='bttn-unite bttn-md bttn-default bttn-no-outline' id='leave-bttn'>Leave Room</button>
 			</div>
 		);
 	}

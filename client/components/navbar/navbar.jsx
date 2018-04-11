@@ -47,7 +47,6 @@ export default class Navbar extends React.Component {
 }
 
 function AuthButtons(props) {
-	console.log(props.userData)
 	if (props.userData) {
 		return (
 			<ul className='navbar-nav ml-auto'>
@@ -70,7 +69,7 @@ function AuthButtons(props) {
 	}
 }
 
-function ChatButtons(props) {
+function ChatButtons() {
 	return (
 		<ul className='navbar-nav ml-auto'>
 			<li className='nav-item'>

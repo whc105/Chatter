@@ -8,7 +8,7 @@ export default class JoinRoom extends React.Component {
 		this.state = {
 			roomID: ''
 		};
-		this.joinRoom = this.joinRoom.bind(this);
+		this.handleClick = this.handleClick.bind(this);
 	}
 	
 	//Sets the state of the prop once the roomID arrives
@@ -18,6 +18,7 @@ export default class JoinRoom extends React.Component {
 			roomID: props.roomID
 		});
 	}
+	
 	joinRoom() {
 		axios.post('/api/joinRoom', {
 			roomID: this.state.roomID
@@ -25,10 +26,16 @@ export default class JoinRoom extends React.Component {
 			console.log(data);
 		});
 	}
+	
+	handleClick() {
+		this.joinRoom();
+		this.props.renderNewList();
+	}
+	
 	render() {
 		return(
 			<div id='join'>
-				<button onClick={this.joinRoom} className='bttn-unite bttn-md bttn-default bttn-no-outline' id='join-bttn'>Join Room</button>
+				<button onClick={this.handleClick} className='bttn-unite bttn-md bttn-default bttn-no-outline' id='join-bttn'>Join Room</button>
 			</div>
 		);
 	}
