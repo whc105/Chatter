@@ -18,6 +18,7 @@ export default class ChatBox extends React.Component {
 		socket.on('send', (message)=> {
 			this.updateMsg(message);
 		});
+		
 	}
 	
 	//Auto scrolls to bottom

@@ -1,6 +1,7 @@
 #intro-content {
     padding-top: 200px;
     width: 500px;
+    display: inline-block;
 }
 
 .welcome-title {
@@ -19,4 +20,23 @@
 @keyframes blink-caret {
   from, to { border-color: transparent }
   50% { border-color: white }
+}
+
+#client-count {
+    display: inline-block;
+    float: right;
+}
+
+#online {
+    color: white;
+}
+
+.online-icon {
+    color: #2f7dd0;
+}
+
+.flash {
+    -webkit-animation-duration: 5s;
+    -moz-animation-duration: 5s;
+    animation-duration: 5s;
 }

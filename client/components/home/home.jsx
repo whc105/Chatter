@@ -1,10 +1,23 @@
 import React from 'react';
+import socketIOClient from 'socket.io-client';
 import './home.css';
 
 export default class Home extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      url: 'https://whc309-final-project-wchen1.c9users.io/',
+      online: ''
+    };
   }
+  componentWillMount() {
+		const socket = socketIOClient(this.state.url);
+		socket.on('getClientTotal', (onlineCount)=> {
+		  this.setState({
+		    online: onlineCount
+		  });
+		});
+	}
   render() {
     return ( 
       <div className='content'>
@@ -21,6 +34,11 @@ export default class Home extends React.Component {
           <p className='lead'>
             Working with other people in your class
           </p>
+        </div>
+        <div id='client-count'>
+          <span id='online'>
+            Users Online: {this.state.online} <i className='fas fa-globe animated infinite flash online-icon'/>
+          </span>
         </div>
       </div>
     );
