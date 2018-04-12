@@ -18,6 +18,8 @@
     color: #f0eeec;
 }
 
-#join {
-    float: right;
+#rm-entrance {
+    display: inline-block;
+    vertical-align: top;
+    text-align: right;
 }

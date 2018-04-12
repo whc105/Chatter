@@ -6,6 +6,14 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 const bodyParser = require('body-parser');
 const flash = require('connect-flash');
+const socketIO = require('socket.io');
+const http = require('http');
+
+const app = express();
+const server = http.createServer(app);
+
+//Socket IO Init
+const io = socketIO(server);
 
 //Config Keys
 const config = require('./config/config');
@@ -18,8 +26,8 @@ const userAPI = require('./api/currentUser');
 const roomAPI = require('./api/rooms');
 const authAPI = require('./auth/authRoutes');
 
-const app = express();
 require('./db');
+require('./socketio')(io);
 
 app.engine('njk', engines.nunjucks);
 app.set('view engine', 'njk');
@@ -53,7 +61,6 @@ app.get('*', (req, res) => {
 	res.render('pages/index');
 });
 
-
-app.listen(config.PORT, function () {
+server.listen(config.PORT, function () {
 	console.log(`App currently running; navigate to localhost:${config.PORT} in a web browser.`);
 });

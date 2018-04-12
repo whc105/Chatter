@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import JoinRoom from '../room-entry/join-room/join-room.jsx';
 import LeaveRoom from '../room-entry/leave-room/leave-room.jsx';
+import ChatBox from '../chatbox/chatbox.jsx';
 import './room.css';
 
 export default class Room extends React.Component {
@@ -57,14 +58,21 @@ export default class Room extends React.Component {
 					<span id='rm-id'>ID: {roomID}</span>
 				</div>
 				<hr/>
-				<div id='rm-users'>
-					<ul className='list-group'>
-						<li className='list-group-item'>There are {roomUsers.length} users</li>
-						{generateUserList}
-					</ul>
+				<div className='row'>
+					<div id='rm-chat' className='col-7'>
+						<ChatBox/>
+					</div>
+					<div id='rm-users' className='col-3'>
+						<ul className='list-group'>
+							<li className='list-group-item'>There are {roomUsers.length} users</li>
+							{generateUserList}
+						</ul>
+					</div>
+					<div id='rm-entrance' className='col-2'>
+						<JoinRoom renderNewList={this.renderNewList} roomID={roomID}/>
+						<LeaveRoom renderNewList={this.renderNewList} roomID={roomID}/>
+					</div>
 				</div>
-				<JoinRoom renderNewList={this.renderNewList} roomID={roomID}/>
-				<LeaveRoom renderNewList={this.renderNewList} roomID={roomID}/>
 			</div>
 		);
 	}

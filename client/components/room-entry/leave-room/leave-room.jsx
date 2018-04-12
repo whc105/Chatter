@@ -32,8 +32,8 @@ export default class LeaveRoom extends React.Component {
 	
 	render() {
 		return(
-			<div id='leave'>
-				<button onClick={this.handleClick} className='bttn-unite bttn-md bttn-default bttn-no-outline' id='leave-bttn'>Leave Room</button>
+			<div id='leave-room'>
+				<button onClick={this.handleClick} className='bttn-unite bttn-md bttn-danger bttn-no-outline' id='leave-bttn'>Leave Room</button>
 			</div>
 		);
 	}

@@ -1,0 +1,23 @@
+#chatbox {
+    border: 2px solid white;
+    height: 75vh;
+    position: relative;
+}
+
+#test {
+    color: white;
+}
+
+#chat-input {
+    background: none;
+    color: white;
+}
+
+#chat-input:focus {
+    color: white;
+}
+
+#chat-field {
+    position: absolute;
+    bottom: 0px;
+}
