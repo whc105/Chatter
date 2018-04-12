@@ -19,5 +19,15 @@
 
 #chat-field {
     position: absolute;
+    height: 5vh;
     bottom: 0px;
+}
+
+#chat-msg {
+    position: absolute;
+    display: inline-block;
+    overflow: scroll;
+    overflow-x: hidden;
+    width: 100%;
+    height: 93.33%;
 }
