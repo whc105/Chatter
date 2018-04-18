@@ -8,7 +8,7 @@ export default class ChatBox extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			url: 'https://whc309-final-project-wchen1.c9users.io/',
+			url: '/',
 			msg: []
 		};
 		

@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import CurrentUsers from '../current-users/current-users.jsx';
 import './navbar.css';
 import { Link } from 'react-router-dom';
 
@@ -41,6 +42,7 @@ export default class Navbar extends React.Component {
 						<AuthButtons userData={this.state.user} activateLogout={this.activateLogout}/>
 					</div>
 				</nav>
+				<CurrentUsers/>
 			</div>
 		);
 	}
