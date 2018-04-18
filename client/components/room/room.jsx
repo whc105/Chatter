@@ -26,7 +26,6 @@ export default class Room extends React.Component {
 	
 	generateUserList() {
 		const roomUsers = (this.state.roomData.users) ? this.state.roomData.users : [];
-		
 		const mapUserToList = roomUsers.map((user)=> {
 			return (
 				<li className='list-group-item' key={user}>User: {user}</li>

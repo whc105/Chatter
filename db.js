@@ -4,8 +4,6 @@ const autoIncrement = require('mongoose-auto-increment');
 const IP = process.env.IP || 'localhost';
 const mongoURI = require('./config/config').KEYS.mongoURI;
 
-//Local mongoURI Remove
-//const mongoURI = `mongodb://${IP}/chatter`;
 const connection = mongoose.createConnection(mongoURI);
 
 //Users

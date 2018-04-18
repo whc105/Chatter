@@ -32,7 +32,10 @@ export default class ChatBox extends React.Component {
 	sendMsg() {
 		const socket = socketIOClient(this.state.url);
 		const message = this.refs.msg.value;
-		socket.emit('send', message);
+		axios.get('/api/current-user')
+		.then(({data})=> {
+			socket.emit('send', {username: data.username, message: message});
+		});
 	}
 	
 	//Updates the list

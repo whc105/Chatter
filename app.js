@@ -24,6 +24,7 @@ const chat = require('./routes/chat');
 
 const userAPI = require('./api/currentUser');
 const roomAPI = require('./api/rooms');
+const chatAPI = require('./api/chat');
 const authAPI = require('./auth/authRoutes');
 
 require('./db');
@@ -51,6 +52,7 @@ app.use(passport.session());
 //APIs
 userAPI(app);
 roomAPI(app);
+chatAPI(app);
 authAPI(app);
 
 //Routes

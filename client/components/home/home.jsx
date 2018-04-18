@@ -10,13 +10,17 @@ export default class Home extends React.Component {
       online: ''
     };
   }
-  componentWillMount() {
+  componentDidMount() {
 		const socket = socketIOClient(this.state.url);
 		socket.on('getClientTotal', (onlineCount)=> {
 		  this.setState({
 		    online: onlineCount
 		  });
 		});
+	}
+	componentWillUnmount() {
+	  const socket = socketIOClient(this.state.url);
+	  socket.removeListener('getClientTotal');
 	}
   render() {
     return ( 

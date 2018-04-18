@@ -1,3 +1,9 @@
+const mongoose = require('mongoose');
+
+require('./db');
+const Chatroom = mongoose.model('Chatroom');
+const User = mongoose.model('User');
+
 module.exports = io => {
     io.on('connection', socket=> {
         console.log('Connected');
@@ -6,15 +12,15 @@ module.exports = io => {
         });
         
         console.log(io.engine.clientsCount);
-        
+
         //Counts total online users
         setInterval(()=> {
             socket.emit('getClientTotal', io.engine.clientsCount);
         }, 2000);
         
-        socket.on('send', (message)=> {
-            console.log(message);
-            io.sockets.emit('send', message);
+        socket.on('send', (data)=> {
+            console.log(data);
+            io.sockets.emit('send', data.message);
         });
     });
 };
