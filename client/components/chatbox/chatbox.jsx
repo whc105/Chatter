@@ -1,6 +1,5 @@
 import React from 'react';
 import axios from 'axios';
-import { animateScroll } from 'react-scroll';
 import socketIOClient from 'socket.io-client';
 import './chatbox.css';
 
@@ -20,6 +19,13 @@ export default class ChatBox extends React.Component {
 		});
 	}
 	
+  componentDidMount() {
+    this.scrollToBottom();
+  }
+
+  componentDidUpdate() {
+    this.scrollToBottom();
+  }
 	//Gets the props and saves it into the roomID
 	componentWillReceiveProps(props) {
 		if (props.roomID !== undefined) {
@@ -34,10 +40,8 @@ export default class ChatBox extends React.Component {
 	}
 	
 	//Auto scrolls to bottom
-	scrollToBttom() {
-		animateScroll.scrollToBottom({
-			containerId: 'chat-msg'
-		});
+	scrollToBottom() {
+		this.elem.scrollIntoView(false);
 	}
 	
 	//Sends message once button is pressed
@@ -60,18 +64,21 @@ export default class ChatBox extends React.Component {
 		let count = 0;
 		return msgList.map((msg)=> {
 			count++;
-			return <li className='list-group-item' key={count}>{msg.message}</li>;
+			return <li className='list-group-item chat-msg-item' key={count}>
+				<span className='chat-username'>{msg.username}: </span>
+				<span className='chat-msg'>{msg.message}</span>
+			</li>;
 		});
 	}
 	
 	render() {
 		const MappedElem = this.msgToListElem(this.state.msg);
-		this.scrollToBttom();
 		return(
 			<div id='chatbox'>
-				<div id='chat-msg'>
+				<div id='chat-msg-list'>
 					<ul className='list-group chat-list'>
 						{MappedElem}
+						<li ref={elem => { this.elem = elem; }}></li>
 					</ul>
 				</div>
 				<div className='input-group fixed-bottom' id='chat-field'>

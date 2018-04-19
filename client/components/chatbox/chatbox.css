@@ -23,11 +23,24 @@
     bottom: 0px;
 }
 
-#chat-msg {
+#chat-msg-list {
     position: absolute;
     display: inline-block;
     overflow: scroll;
     overflow-x: hidden;
     width: 100%;
     height: 93.33%;
+}
+
+.chat-msg-item {
+    border: none;
+}
+
+.chat-username {
+    line-height: 1.2;
+}
+
+.chat-msg {
+    line-height: 1.2;
+    font-weight: 300;
 }
