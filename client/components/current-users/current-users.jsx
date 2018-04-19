@@ -1,33 +1,41 @@
 import React from 'react';
 import socketIOClient from 'socket.io-client';
 
+const socket = socketIOClient('/');
 export default class CurrentUsers extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-          url: '/',
-          online: ''
-        };
-    }
-    componentDidMount() {
-		const socket = socketIOClient(this.state.url);
-		socket.on('getClientTotal', (onlineCount)=> {
-		  this.setState({
-		    online: onlineCount
-		  });
+	constructor(props) {
+		super(props);
+		this.state = {
+		  online: ''
+		};
+		socket.on('getClientTotal', (clientAmount)=> {
+			this.setState({
+				online: clientAmount
+			});
 		});
 	}
-	componentWillUnmount() {
-	  const socket = socketIOClient(this.state.url);
-	  socket.removeListener('getClientTotal');
+	
+	updateOnline(clientAmount) {
+		this.setState({
+			online: clientAmount
+		});
 	}
+	
+	componentDidMount() {
+		socket.emit('getClientTotal');
+	}
+	
+	componentWillUnmount() {
+	  socket.close();
+	}
+	
 	render() {
-	    return(
-	        <div id='client-count'>
-              <span id='online'>
-                Users Online: {this.state.online} <i className='fas fa-globe animated infinite flash online-icon'/>
-              </span>
-            </div>
-	    )
+		return(
+			<div id='client-count'>
+			  <span id='online'>
+				Users Online: {this.state.online} <i className='fas fa-globe animated infinite flash online-icon'/>
+			  </span>
+			</div>
+		)
 	}
 }

@@ -73,8 +73,3 @@ export default class ChatBox extends React.Component {
 		);
 	}
 }
-
-/*
-<button onClick={this.red}>red</button>
-<button onClick={this.green}>green</button>
-*/

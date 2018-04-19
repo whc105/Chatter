@@ -1,4 +1,5 @@
 import React from 'react';
+import CurrentUsers from '../current-users/current-users.jsx';
 import './home.css';
 
 export default class Home extends React.Component {
@@ -9,6 +10,7 @@ export default class Home extends React.Component {
   render() {
     return ( 
       <div className='content'>
+        <CurrentUsers/>
         <div id='intro-content'>
           <span className='welcome-title'>Welcome to Chatter </span>
           <br/>
