@@ -13,9 +13,8 @@ module.exports = io => {
         
         console.log(io.engine.clientsCount);
 
+        //Counts total online users
         socket.on('getClientTotal', ()=> {
-            console.log('run')
-            //Counts total online users
             setInterval(()=> {
                 socket.emit('getClientTotal', io.engine.clientsCount);
             }, 2000);
