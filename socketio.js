@@ -2,7 +2,6 @@ const mongoose = require('mongoose');
 
 require('./db');
 const Chatroom = mongoose.model('Chatroom');
-const User = mongoose.model('User');
 
 module.exports = io => {
     io.on('connection', socket=> {
@@ -21,8 +20,23 @@ module.exports = io => {
         });
         
         socket.on('send', (data)=> {
-            console.log(data);
-            io.sockets.emit('send', data.message);
+            const roomID = data.roomID;
+            const username = data.username;
+            const time = new Date();
+            const message = {
+                username: (username) ? username : 'Anonymous',
+                message: data.message,
+                time: time
+            };
+            
+            Chatroom.update({id: roomID}, {$push: {messages: message}},
+            (err)=> {
+                if (err) {
+                    console.log(err);
+                } else {
+                    io.sockets.emit('send', message);
+                }
+            });
         });
     });
 };

@@ -4,21 +4,33 @@ import { animateScroll } from 'react-scroll';
 import socketIOClient from 'socket.io-client';
 import './chatbox.css';
 
+const socket = socketIOClient('/');
+
 export default class ChatBox extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			url: '/',
 			msg: []
 		};
 		
 		this.sendMsg = this.sendMsg.bind(this);
 		
-		const socket = socketIOClient(this.state.url);
 		socket.on('send', (message)=> {
 			this.updateMsg(message);
 		});
-		
+	}
+	
+	//Gets the props and saves it into the roomID
+	componentWillReceiveProps(props) {
+		if (props.roomID !== undefined) {
+			axios.get(`/api/getAllMessages/${props.roomID}`)
+			.then(({data})=> {
+				this.setState({
+					msg: data.messages,
+					roomID: props.roomID
+				});
+			});
+		}
 	}
 	
 	//Auto scrolls to bottom
@@ -30,11 +42,10 @@ export default class ChatBox extends React.Component {
 	
 	//Sends message once button is pressed
 	sendMsg() {
-		const socket = socketIOClient(this.state.url);
 		const message = this.refs.msg.value;
 		axios.get('/api/current-user')
 		.then(({data})=> {
-			socket.emit('send', {username: data.username, message: message});
+			socket.emit('send', {username: data.username, message: message, roomID: this.state.roomID});
 		});
 	}
 	
@@ -49,7 +60,7 @@ export default class ChatBox extends React.Component {
 		let count = 0;
 		return msgList.map((msg)=> {
 			count++;
-			return <li className='list-group-item' key={count}>{msg}</li>;
+			return <li className='list-group-item' key={count}>{msg.message}</li>;
 		});
 	}
 	

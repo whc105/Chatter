@@ -59,7 +59,7 @@ export default class Room extends React.Component {
 				<hr/>
 				<div className='row'>
 					<div id='rm-chat' className='col-7'>
-						<ChatBox/>
+						<ChatBox roomID={roomID}/>
 					</div>
 					<div id='rm-users' className='col-3'>
 						<ul className='list-group'>

@@ -33,14 +33,13 @@ module.exports = app => {
                     res.send(err);
                 } else {
                     User.update({username: req.user.username}, {$push: {chatrooms: req.body.roomID}},
-                        (err)=> {
-                            if (err) {
-                                res.send(err);
-                            } else {
-                                res.send(true);
-                            }
+                    (err)=> {
+                        if (err) {
+                            res.send(err);
+                        } else {
+                            res.send(true);
                         }
-                    );
+                    });
                 }
             });
         } else {

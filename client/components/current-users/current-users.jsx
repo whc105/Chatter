@@ -2,12 +2,14 @@ import React from 'react';
 import socketIOClient from 'socket.io-client';
 
 const socket = socketIOClient('/');
+
 export default class CurrentUsers extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 		  online: ''
 		};
+		//Saves the total clients to state
 		socket.on('getClientTotal', (clientAmount)=> {
 			this.setState({
 				online: clientAmount
