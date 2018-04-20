@@ -13,6 +13,7 @@ export default class ChatBox extends React.Component {
 		};
 		
 		this.sendMsg = this.sendMsg.bind(this);
+		this.handleEnterKeyPress = this.handleEnterKeyPress.bind(this);
 		
 		socket.on('send', (message)=> {
 			this.updateMsg(message);
@@ -47,6 +48,7 @@ export default class ChatBox extends React.Component {
 	//Sends message once button is pressed
 	sendMsg() {
 		const message = this.refs.msg.value;
+		this.refs.msg.value = '';
 		axios.get('/api/current-user')
 		.then(({data})=> {
 			socket.emit('send', {username: data.username, message: message, roomID: this.state.roomID});
@@ -71,6 +73,12 @@ export default class ChatBox extends React.Component {
 		});
 	}
 	
+	handleEnterKeyPress(e) {
+		if (e.key === 'Enter') {
+			this.sendMsg();
+		}
+	}
+	
 	render() {
 		const MappedElem = this.msgToListElem(this.state.msg);
 		return(
@@ -82,7 +90,7 @@ export default class ChatBox extends React.Component {
 					</ul>
 				</div>
 				<div className='input-group fixed-bottom' id='chat-field'>
-					<input type='text' className='form-control' id='chat-input' ref='msg'/>
+					<input type='text' className='form-control' onKeyPress={this.handleEnterKeyPress} id='chat-input' ref='msg'/>
 					<div className='input-group-append'>
 						<button className='bttn-bordered bttn-md bttn-default bttn-no-outline' onClick={this.sendMsg}>Send</button>
 					</div>
