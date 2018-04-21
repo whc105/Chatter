@@ -3,10 +3,18 @@
     width: 400px;
 }
 
+.room-name {
+    float: left;
+}
+
 .room-id {
     float: right;
 }
 
 input:focus {
     outline: none;
+}
+
+.link-button {
+    width: 400px;
 }
