@@ -12,6 +12,10 @@ export default class Chat extends React.Component {
 	render() {
 		return (
 			<div>
+				<div id='header'>
+					<span id='header-title'>Chat</span>
+				</div>
+				<hr/>
 				<div id='room-dropdown'>
 					<RoomSearch type='search-link'/>
 				</div>
@@ -19,8 +23,7 @@ export default class Chat extends React.Component {
 					<CreateRoom/>
 				</div>
 				<Link to='/key'>
-					<button className='bttn-bordered bttn-sm bttn-default'>Key
-					</button>
+					<button className='bttn-bordered bttn-sm bttn-default'>Key</button>
 				</Link>
 			</div>
 		);

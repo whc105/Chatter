@@ -30,6 +30,7 @@ export default class Key extends React.Component {
 				<div id='header'>
 					<span id='header-title'>Generate Keys</span>
 				</div>
+				<hr/>
 				<div id='room-search'>
 					<RoomSearch selectedRoom={this.selectedRoom} type='select'/>
 					<span id='selected-room'>{room}</span>
