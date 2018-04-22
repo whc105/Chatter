@@ -22,7 +22,7 @@ export default class CreateRoom extends React.Component {
 	render() {
 		return(
 			<div id='rm-maker'>
-				<button type='button' data-toggle='modal' data-target='#create-room' className='bttn-slant bttn-md bttn-primary bttn-no-outline'>Create A Room</button>
+				<button type='button' data-toggle='modal' data-target='#create-room' className='bttn-bordered bttn-md bttn-default bttn-no-outline'>Create A Room</button>
 				<div className='modal animated zoomIn' id='create-room' tabIndex='-1' role='dialog' aria-labelledby='create-room-label' aria-hidden='true'>
 					<div className='modal-dialog' role='document'>
 						<div className='modal-content'>

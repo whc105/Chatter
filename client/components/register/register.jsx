@@ -30,7 +30,7 @@ export default class Register extends React.Component {
     } else {
       axios.post('/register', {
         username: refs.username.value, password: refs.password1.value,
-        email: refs.email.value
+        email: refs.email.value, key: refs.key.value
       }).then((res)=> {
         if (res.data) {
           window.location = '/';
