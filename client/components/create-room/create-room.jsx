@@ -6,12 +6,25 @@ export default class CreateRoom extends React.Component {
 	constructor(props) {
 		super(props);
 		this.createRoom = this.createRoom.bind(this);
+		this.state = {
+			username: undefined
+		};
+	}
+	
+	componentDidMount() {
+		axios.get('/api/current-user')
+		.then(({data})=> {
+			if (data) {
+				this.setState({username: data.username});
+			}
+		});
 	}
 	
 	createRoom() {
 		const refs = this.refs;
 		axios.post('/chat/make-room', {
-			name: refs.rmName.value
+			name: refs.rmName.value,
+			createdBy: this.state.username
 		}).then((res)=> {
 			if (true) {
 				window.location = '../chat';

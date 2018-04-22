@@ -24,7 +24,8 @@ const ChatRoomSchema = new Schema({
         username: String,
         message: String,
         time: Date
-    }]
+    }],
+    createdBy: String
 });
 
 //Private messaging with two users
