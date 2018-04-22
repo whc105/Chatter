@@ -8,8 +8,6 @@ const User = mongoose.model('User');
 const Key = mongoose.model('Key');
 
 router.post('/', (req, res)=> {
-    console.log(req.body.key)
-    
     if (req.body.key === '') {
         req.body.permission = 0;
         createUser(req, res);
@@ -26,6 +24,7 @@ router.post('/', (req, res)=> {
 });
 
 function createUser(req, res) {
+    //Check if user already exists.
     User.findOne({$or: [{username: req.body.username}, {email: req.body.email}]}, (err, user)=> {
         if (err) {
             res.send(err);
@@ -36,11 +35,7 @@ function createUser(req, res) {
             .then((hash)=> {
                 req.body.password = hash;
                 new User(req.body).save((err)=> {
-                    if (err) {
-                        res.send(err);
-                    } else {
-                        res.send(true);
-                    }
+                    (err) ? res.send(err) : res.send(true);
                 });
             });
         }

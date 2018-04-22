@@ -12,7 +12,7 @@ export default class Register extends React.Component {
     };
   }
   
-  componentWillMount() {
+  componentDidMount() {
     axios.get('/api/current-user')
     .then(({data})=> {
       if (data) {

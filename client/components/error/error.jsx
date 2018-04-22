@@ -8,10 +8,13 @@ export default class ErrorMessage extends React.Component {
 		};
 	}
 	
-	componentWillReceiveProps(props) {
-		this.setState({
-			errorMessage: props.errorMessage
-		});
+	static getDerivedStateFromProps(nextProps, prevState) {
+		if (nextProps.errorMessage !== prevState.errorMessage) {
+			return {
+				errorMessage: nextProps.errorMessage
+			};
+		}
+		return null;
 	}
 	
 	render() {

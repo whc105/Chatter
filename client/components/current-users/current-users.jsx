@@ -9,6 +9,7 @@ export default class CurrentUsers extends React.Component {
 		this.state = {
 		  online: ''
 		};
+		
 		//Saves the total clients to state
 		socket.on('getClientTotal', (clientAmount)=> {
 			this.setState({
@@ -38,6 +39,6 @@ export default class CurrentUsers extends React.Component {
 				Users Online: {this.state.online} <i className='fas fa-globe animated infinite flash online-icon'/>
 			  </span>
 			</div>
-		)
+		);
 	}
 }

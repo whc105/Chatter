@@ -14,7 +14,7 @@ export default class Room extends React.Component {
 		this.renderNewList = this.renderNewList.bind(this);
 	}
 	
-	componentWillMount() {
+	componentDidMount() {
 		axios.get('/api/getRoom', {
 			params: {
 				id: this.props.match.params.id

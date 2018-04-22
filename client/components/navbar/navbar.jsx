@@ -11,7 +11,9 @@ export default class Navbar extends React.Component {
 			user: ''
 		};
 	}
-	componentWillMount() {
+	
+	//Sets the navbar current user
+	componentDidMount() {
 		axios.get('/api/current-user')
 		.then(({data})=> {
 			if (data) {
@@ -19,6 +21,8 @@ export default class Navbar extends React.Component {
 			}
 		});
 	}
+	
+	//Log out user
 	activateLogout() {
 		axios.get('/auth/logout')
 		.then(({data})=> {

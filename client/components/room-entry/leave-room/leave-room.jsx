@@ -5,23 +5,19 @@ import './leave-room.css';
 export default class LeaveRoom extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = {
-			roomID: ''
-		};
+		this.state = {};
 		this.handleClick = this.handleClick.bind(this);
 	}
 	
-	componentWillReceiveProps(props) {
-		this.setState({
-			roomID: props.roomID
-		});
+	static getDerivedStateFromProps(nextProps, prevState) {
+		return {
+			roomID: nextProps.roomID
+		};
 	}
 	
 	leaveRoom() {
 		axios.post('/api/leaveRoom', {
 			roomID: this.state.roomID
-		}).then(({data})=> {
-			console.log(data);
 		});
 	}
 	

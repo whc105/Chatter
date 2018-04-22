@@ -5,25 +5,21 @@ import './join-room.css';
 export default class JoinRoom extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = {
-			roomID: ''
-		};
+		this.state = {};
 		this.handleClick = this.handleClick.bind(this);
 	}
 	
 	//Sets the state of the prop once the roomID arrives
 	//Will be used to tell Axios what room to join
-	componentWillReceiveProps(props) {
-		this.setState({
-			roomID: props.roomID
-		});
+	static getDerivedStateFromProps(nextProps, prevState) {
+		return {
+			roomID: nextProps.roomID
+		};
 	}
 	
 	joinRoom() {
 		axios.post('/api/joinRoom', {
 			roomID: this.state.roomID
-		}).then(({data})=> {
-			console.log(data);
 		});
 	}
 	
