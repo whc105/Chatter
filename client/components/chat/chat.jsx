@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import CreateRoom from '../create-room/create-room.jsx';
 import RoomSearch from '../search/room-search/room-search.jsx';
 import './chat.css';
@@ -11,8 +12,16 @@ export default class Chat extends React.Component {
 	render() {
 		return (
 			<div>
-				<CreateRoom/>
-				<RoomSearch/>
+				<div id='room-dropdown'>
+					<RoomSearch type='search-link'/>
+				</div>
+				<div id='room-creation'>
+					<CreateRoom/>
+				</div>
+				<Link to='/key'>
+					<button className='bttn-bordered bttn-sm bttn-default'>Key
+					</button>
+				</Link>
 			</div>
 		);
 	}

@@ -1,9 +1,15 @@
 #rm-name {
     text-align: center;
     color: #f0eeec;
+    line-height: 1.2;
+    font-size: 1.5rem;
+    font-weight: 300;
 }
 
 #rm-id {
+    line-height: 1.2;
+    font-size: 1.5rem;
+    font-weight: 300;
     float: right;
 }
 

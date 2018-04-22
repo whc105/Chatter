@@ -1,0 +1,10 @@
+#room-creation {
+    padding-top: 30px;
+    display: flex;
+    float: right;
+}
+
+#room-dropdown {
+    padding-top: 30px;
+    display: inline-block;
+}

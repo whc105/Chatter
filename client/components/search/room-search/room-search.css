@@ -1,6 +1,6 @@
 #search {
-    padding-top: 30px;
-    width: 400px;
+    width: 380px;
+    display: inline-block;
 }
 
 .room-name {
@@ -16,5 +16,5 @@ input:focus {
 }
 
 .link-button {
-    width: 400px;
+    width: 380px;
 }

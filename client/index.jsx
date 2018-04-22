@@ -9,6 +9,7 @@ import Register from './components/register/register.jsx';
 import Chat from './components/chat/chat.jsx';
 import Room from './components/room/room.jsx';
 import DirectMessage from './components/direct/direct.jsx';
+import Key from './components/key/key.jsx';
 
 import './index.css';
 
@@ -24,6 +25,7 @@ class Index extends React.Component {
       { path: '/chat', name:'Chat', component: Chat },
       { path: '/chat/:id', name:'Room', component: Room },
       { path: '/direct', name: 'DirectMessage', component: DirectMessage },
+      { path: '/key', name: 'Key', component: Key },
     ];
 
     return (
