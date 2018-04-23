@@ -10,9 +10,26 @@
 }
 
 #selected-room {
-    float: right;
+    float: left;
     color: white;
     line-height: 1.2;
     font-size: 1.5rem;
     font-weight: 300;
+}
+
+#room-search {
+    float: right;
+}
+
+#key-number-amount {
+    padding-top: 10px;
+}
+
+#key-amount {
+    background-color: transparent;
+    color: white;
+}
+
+#key-amount::placeholder {
+    color: white;
 }
