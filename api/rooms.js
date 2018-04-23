@@ -12,7 +12,7 @@ module.exports = app => {
     });
     
     app.get('/api/getRoom', (req, res)=> {
-        Chatroom.findOne({id: req.query.id}, {'_id':0, '__v':0}, (err, room)=> {
+        Chatroom.findOne({id: req.query.id}, {_id:0, __v:0}, (err, room)=> {
             (err) ? res.send(err) : res.send(room);
         });
     });

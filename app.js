@@ -22,7 +22,7 @@ const config = require('./config/config');
 const register = require('./routes/register');
 const chat = require('./routes/chat');
 
-const userAPI = require('./api/currentUser');
+const userAPI = require('./api/user');
 const roomAPI = require('./api/rooms');
 const chatAPI = require('./api/chat');
 const keyAPI = require('./api/key');
