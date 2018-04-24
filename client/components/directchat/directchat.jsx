@@ -1,25 +1,32 @@
 import React from 'react';
 import axios from 'axios';
 import socketIOClient from 'socket.io-client';
-import './chatbox.css';
+import './directchat.css';
 
 const socket = socketIOClient('/');
 
-export default class ChatBox extends React.Component {
+export default class DirectChat extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			msg: []
+			msg: [],
+			selectedUser: ''
 		};
 		
 		this.sendMsg = this.sendMsg.bind(this);
 		this.handleEnterKeyPress = this.handleEnterKeyPress.bind(this);
 		
-		socket.on('group-send', (message)=> {
-			this.updateMsg(message);
+		socket.on('direct-send', (message)=> {
+			axios.get('/api/current-user')
+			.then(({data})=> {
+				const username = (data === '') ? 'Anonymous' : data.username;
+				if (message.username === username && message.selectedUser === this.state.selectedUser) {
+					this.updateMsg(message);
+				}
+			});
 		});
 	}
-	
+
   componentDidMount() {
     this.scrollToBottom();
   }
@@ -27,15 +34,15 @@ export default class ChatBox extends React.Component {
   componentDidUpdate() {
     this.scrollToBottom();
   }
-  
-	//Gets the props and saves it into the roomID
+	
 	componentWillReceiveProps(props) {
-		if (props.roomID !== undefined) {
-			axios.get(`/api/getAllMessages/${props.roomID}`)
-			.then(({data})=> {
+		if (props.selectedUser !== '') {
+			axios.post('/api/createDirectMessage', {
+				selectedUser: props.selectedUser
+			}).then(({data})=> {
 				this.setState({
 					msg: data.messages,
-					roomID: props.roomID
+					selectedUser: props.selectedUser
 				});
 			});
 		}
@@ -52,7 +59,8 @@ export default class ChatBox extends React.Component {
 		this.refs.msg.value = '';
 		axios.get('/api/current-user')
 		.then(({data})=> {
-			socket.emit('group-send', {username: data.username, message: message, roomID: this.state.roomID});
+			const username = (data === '') ? 'Anonymous' : data.username; //Remove once finished
+			socket.emit('direct-send', {username: username, message: message, selectedUser: this.state.selectedUser});
 		});
 	}
 	
@@ -66,10 +74,9 @@ export default class ChatBox extends React.Component {
 	msgToListElem(msgList) {
 		let count = 0;
 		return msgList.map((msg)=> {
-			count++;
-			return <li className='list-group-item chat-msg-item' key={count}>
-				<span className='chat-username'>{msg.username}: </span>
-				<span className='chat-msg'>{msg.message}</span>
+			return <li className='list-group-item direct-msg-item' key={count++}>
+				<span className='direct-username'>{msg.username}: </span>
+				<span className='direct-msg'>{msg.message}</span>
 			</li>;
 		});
 	}
@@ -83,15 +90,15 @@ export default class ChatBox extends React.Component {
 	render() {
 		const MappedElem = this.msgToListElem(this.state.msg);
 		return(
-			<div id='chatbox'>
-				<div id='chat-msg-list'>
-					<ul className='list-group chat-list'>
+			<div id='directbox'>
+				<div id='direct-msg-list'>
+					<ul className='list-group direct-list'>
 						{MappedElem}
 						<li ref={elem => { this.elem = elem; }}></li>
 					</ul>
 				</div>
-				<div className='input-group fixed-bottom' id='chat-field'>
-					<input type='text' className='form-control' onKeyPress={this.handleEnterKeyPress} id='chat-input' ref='msg'/>
+				<div className='input-group fixed-bottom' id='direct-field'>
+					<input type='text' className='form-control' onKeyPress={this.handleEnterKeyPress} id='direct-input' ref='msg'/>
 					<div className='input-group-append'>
 						<button className='bttn-bordered bttn-md bttn-default bttn-no-outline' onClick={this.sendMsg}>Send</button>
 					</div>

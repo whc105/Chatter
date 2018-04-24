@@ -19,7 +19,8 @@ module.exports = io => {
             }, 2000);
         });
         
-        socket.on('send', (data)=> {
+        //Sends data to chatroom
+        socket.on('group-send', (data)=> {
             const roomID = data.roomID;
             const username = data.username;
             const time = new Date();
@@ -34,9 +35,15 @@ module.exports = io => {
                 if (err) {
                     console.log(err);
                 } else {
-                    io.sockets.emit('send', message);
+                    io.sockets.emit('group-send', message);
                 }
             });
+        });
+        
+        //Sends data to private room
+        socket.on('direct-send', (data)=> {
+            console.log(data)
+            io.sockets.emit('direct-send', data);
         });
     });
 };
