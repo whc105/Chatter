@@ -20,7 +20,6 @@ const config = require('./config/config');
 
 //Routes
 const register = require('./routes/register');
-const chat = require('./routes/chat');
 
 const userAPI = require('./api/user');
 const roomAPI = require('./api/rooms');
@@ -59,7 +58,6 @@ authAPI(app);
 
 //Routes
 app.use('/register', register);
-app.use('/chat', chat);
 
 app.get('*', (req, res) => {
 	res.render('pages/index');

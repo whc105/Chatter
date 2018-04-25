@@ -85,7 +85,7 @@ Home Page - Landing Page
 /Register - Register page
 ![Register](documentation/register.jpg)
 
-/Users - User search page
+/Users - User search page | Scrapped/Integrated with /Direct
 ![Users](documentation/user.jpg)
 
 /Direct - Direct Messaging Page with user lookup
@@ -108,8 +108,7 @@ Home Page - Landing Page
 3. As an user, I can send/view messages to rooms I have access to.
 4. As an user, I can send/view direct messages to other users.
 6. As an administrator, I can create keys for users to gain access to rooms.
-7. As an administrator, I can kick users out of rooms.
-8. As an administrator, I can create/delete chatrooms.
+7. As an administrator, I can create/delete chatrooms.
 
 ## Research Topics
 

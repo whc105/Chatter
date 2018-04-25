@@ -52,4 +52,27 @@ module.exports = app => {
             res.send(false);
         }
     });
+    
+    app.post('/api/create-room', (req, res)=> {
+        if (req.body.createdBy === undefined) {
+            req.body.createdBy = 'Anonymous';
+        }
+        new Chatroom(req.body).save((err)=> {
+            (err) ? res.send(err) : res.send(true);
+        });
+    });
+    
+    app.post('/api/delete-room', (req, res)=> {
+        console.log(req.body.roomID);
+        Chatroom.remove({id: req.body.roomID, createdBy: req.user.username}, (err)=> {
+            if (err) {
+                res.send(err);
+            } else {
+                User.updateMany({}, {$pull: {chatrooms: req.body.roomID}},
+                (err)=> {
+                    (err) ? res.send(err) : res.send(true);
+                });
+            }
+        });
+    });
 };

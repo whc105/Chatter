@@ -13,7 +13,7 @@ export default class RoomSearch extends React.Component {
 		this.liveSearch = this.liveSearch.bind(this);
 	}
 	
-	//Takes a type
+	//Takes a type. Either redirect or select.
 	static getDerivedStateFromProps(nextProps, prevState) {
 		if (nextProps.type !== prevState.type) {
 			return {

@@ -22,7 +22,7 @@ export default class CreateRoom extends React.Component {
 	
 	createRoom() {
 		const refs = this.refs;
-		axios.post('/chat/make-room', {
+		axios.post('/api/create-room', {
 			name: refs.rmName.value,
 			createdBy: this.state.username
 		}).then((res)=> {
