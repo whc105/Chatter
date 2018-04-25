@@ -14,8 +14,14 @@ export default class UserSearch extends React.Component {
 	componentDidMount() {
 		axios.get('/api/getAllUsers')
 		.then(({data})=> {
-			this.setState({
-				users: data
+			axios.get('/api/current-user')
+			.then((user)=> {
+				const resultList = data.filter((elem)=> {
+					return elem.username !== user.data.username;
+				});
+				this.setState({
+					users: resultList
+				});
 			});
 		});
 	}

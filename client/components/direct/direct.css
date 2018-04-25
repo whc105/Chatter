@@ -1,3 +1,11 @@
 #user-dropdown {
     float: right;
 }
+
+#direct-user-message {
+    color: white;
+}
+
+#direct-message-box {
+    padding-bottom: 10px;
+}
