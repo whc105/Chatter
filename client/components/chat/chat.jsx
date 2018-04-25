@@ -23,6 +23,7 @@ export default class Chat extends React.Component {
 				<div id='room-creation'>
 					<CreateRoom/>
 				</div>
+				<br/>
 				<div id='room-deletion'>
 					<DeleteRoom/>
 				</div>

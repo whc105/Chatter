@@ -1,6 +1,12 @@
 #room-creation {
     padding-top: 30px;
-    display: flex;
+    display: block;
+    float: right;
+}
+
+#room-deletion {
+    padding-top: 30px;
+    display: block;
     float: right;
 }
 
