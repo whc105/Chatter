@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 
 require('./db');
 const Chatroom = mongoose.model('Chatroom');
+const Privateroom = mongoose.model('Privateroom');
 
 module.exports = io => {
     io.on('connection', socket=> {
@@ -23,11 +24,10 @@ module.exports = io => {
         socket.on('group-send', (data)=> {
             const roomID = data.roomID;
             const username = data.username;
-            const time = new Date();
             const message = {
                 username: (username) ? username : 'Anonymous',
                 message: data.message,
-                time: time
+                time: new Date()
             };
             
             Chatroom.update({id: roomID}, {$push: {messages: message}},
@@ -42,8 +42,21 @@ module.exports = io => {
         
         //Sends data to private room
         socket.on('direct-send', (data)=> {
-            console.log(data)
-            io.sockets.emit('direct-send', data);
+            const username = data.username;
+            const selectedUser = data.selectedUser;
+            const message = {
+                username: username,
+                message: data.message,
+                time: new Date()
+            };
+            Privateroom.update({users: {$all: [username, selectedUser]}}, {$push: {messages: message}},
+            (err)=> {
+                if (err) {
+                    console.log(err);
+                } else {
+                    io.sockets.emit('direct-send', data);
+                }
+            });
         });
     });
 };
