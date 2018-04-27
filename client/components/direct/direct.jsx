@@ -1,5 +1,4 @@
 import React from 'react';
-import axios from 'axios';
 import UserSearch from '../search/user-search/user-search.jsx';
 import DirectChat from '../directchat/directchat.jsx';
 import './direct.css';

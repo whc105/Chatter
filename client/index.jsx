@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import { render } from 'react-dom';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 
@@ -16,16 +17,29 @@ import './index.css';
 class Index extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      permission: -1
+    };
   }
+  
+  componentDidMount() {
+    axios.get('/api/current-user')
+    .then(({data})=> {
+      this.setState({
+        permission: data.permission
+      });
+    });
+  }
+  
   render() {
     let routes = [
       { path: '/', name: 'Home', component: Home },
       { path: '/login', name: 'Login', component: Login },
       { path: '/register', name: 'Register', component: Register },
-      { path: '/chat', name:'Chat', component: Chat },
-      { path: '/chat/:id', name:'Room', component: Room },
-      { path: '/direct', name: 'DirectMessage', component: DirectMessage },
-      { path: '/key', name: 'Key', component: Key },
+      { path: (this.state.permission >= 0) ? '/chat' : '/', name:'Chat', component: Chat },
+      { path:  (this.state.permission >= 0) ? '/chat/:id' : '/', name:'Room', component: Room },
+      { path:  (this.state.permission >= 0) ? '/direct' : '/', name: 'DirectMessage', component: DirectMessage },
+      { path:  (this.state.permission === 1) ? '/key' : '/', name: 'Key', component: Key },
     ];
 
     return (

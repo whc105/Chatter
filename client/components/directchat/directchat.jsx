@@ -56,13 +56,15 @@ export default class DirectChat extends React.Component {
 	
 	//Sends message once button is pressed
 	sendMsg() {
-		const message = this.refs.msg.value;
-		this.refs.msg.value = '';
-		axios.get('/api/current-user')
-		.then(({data})=> {
-			const username = (data === '') ? 'Anonymous' : data.username; //Remove once finished
-			socket.emit('direct-send', {username: username, message: message, selectedUser: this.state.selectedUser});
-		});
+		if (this.state.selectedUser !== '') {
+			const message = this.refs.msg.value;
+			this.refs.msg.value = '';
+			axios.get('/api/current-user')
+			.then(({data})=> {
+				const username = data.username; //Remove once finished
+				socket.emit('direct-send', {username: username, message: message, selectedUser: this.state.selectedUser});
+			});
+		}
 	}
 	
 	//Updates the list
