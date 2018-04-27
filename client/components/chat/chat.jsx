@@ -26,10 +26,11 @@ export default class Chat extends React.Component {
 				<br/>
 				<div id='room-deletion'>
 					<DeleteRoom/>
+					<br/>
+					<Link to='/key'>
+						<button className='bttn-bordered bttn-md bttn-default'>Key</button>
+					</Link>
 				</div>
-				<Link to='/key'>
-					<button className='bttn-bordered bttn-sm bttn-default'>Key</button>
-				</Link>
 			</div>
 		);
 	}

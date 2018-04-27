@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 
 require('../db');
 const Key = mongoose.model('Key');
+const Chatroom = mongoose.model('Chatroom');
 
 module.exports = app => {
     app.post('/api/createRoomKeys', (req, res)=> {
@@ -11,8 +12,17 @@ module.exports = app => {
             type: req.body.roomID,
             uses: parseInt(keyVal, 10)
         };
-        new Key(keyInput).save((err)=> {
-            (err) ? res.send(err) : res.send(true);
+        
+        Chatroom.findOne({createdBy: req.user.username, id: req.body.roomID}, (err, result)=> {
+            if (err) {
+                res.send(err);
+            } else {
+                if (result) {
+                    new Key(keyInput).save((err)=> {
+                        (err) ? res.send(err) : res.send(true);
+                    });
+                }
+            }
         });
     });
 };
