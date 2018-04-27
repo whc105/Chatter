@@ -1,4 +1,5 @@
-The content below is an example project proposal / requirements document. Replace the text below the lines marked "__TODO__" with details specific to your project. Remove the "TODO" lines.
+Note: I have created only 1000 admin keys (Admin registration keys can not be created via the site). If you need more, tell me.
+Registration can be done without an admin key, but they can not create rooms.
 
 # Chatter
 

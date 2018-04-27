@@ -19,7 +19,7 @@ export default class DirectChat extends React.Component {
 		socket.on('direct-send', (message)=> {
 			axios.get('/api/current-user')
 			.then(({data})=> {
-				const username = (data === '') ? 'Anonymous' : data.username;
+				const username = data.username;
 				if ((message.username === username || message.username === this.state.selectedUser) 
 				&& (message.selectedUser === this.state.selectedUser || message.selectedUser === username)) {
 					this.updateMsg(message);

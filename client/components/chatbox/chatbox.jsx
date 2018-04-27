@@ -16,7 +16,12 @@ export default class ChatBox extends React.Component {
 		this.handleEnterKeyPress = this.handleEnterKeyPress.bind(this);
 		
 		socket.on('group-send', (message)=> {
-			this.updateMsg(message);
+			axios.get('/api/current-user')
+			.then(({data})=> {
+				if (data.chatrooms.includes(parseInt(this.state.roomID, 10))) {
+					this.updateMsg(message);
+				}
+			});
 		});
 	}
 	
@@ -48,11 +53,16 @@ export default class ChatBox extends React.Component {
 	
 	//Sends message once button is pressed
 	sendMsg() {
-		const message = this.refs.msg.value;
-		this.refs.msg.value = '';
 		axios.get('/api/current-user')
 		.then(({data})=> {
-			socket.emit('group-send', {username: data.username, message: message, roomID: this.state.roomID});
+			if (data.chatrooms.includes(parseInt(this.state.roomID, 10))) {
+				const message = this.refs.msg.value;
+				this.refs.msg.value = '';
+				axios.get('/api/current-user')
+				.then(({data})=> {
+					socket.emit('group-send', {username: data.username, message: message, roomID: this.state.roomID});
+				});
+			}
 		});
 	}
 	
