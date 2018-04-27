@@ -24,7 +24,7 @@ export default class ChatBox extends React.Component {
 			});
 		});
 	}
-	
+		
   componentDidMount() {
     this.scrollToBottom();
   }

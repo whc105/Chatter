@@ -25,21 +25,25 @@ router.post('/', (req, res)=> {
 
 function createUser(req, res) {
     //Check if user already exists.
-    User.findOne({$or: [{username: req.body.username}, {email: req.body.email}]}, (err, user)=> {
-        if (err) {
-            res.send(err);
-        } else if (user) {
-            res.send(false);
-        } else {
-            bcrypt.hash(req.body.password, 10)
-            .then((hash)=> {
-                req.body.password = hash;
-                new User(req.body).save((err)=> {
-                    (err) ? res.send(err) : res.send(true);
+    if (req.body.password.length < 8) {
+        res.send(false);
+    } else {
+        User.findOne({$or: [{username: req.body.username}, {email: req.body.email}]}, (err, user)=> {
+            if (err) {
+                res.send(err);
+            } else if (user) {
+                res.send(false);
+            } else {
+                bcrypt.hash(req.body.password, 10)
+                .then((hash)=> {
+                    req.body.password = hash;
+                    new User(req.body).save((err)=> {
+                        (err) ? res.send(err) : res.send(true);
+                    });
                 });
-            });
-        }
-    });
+            }
+        });
+    }
 }
 
 module.exports = router;

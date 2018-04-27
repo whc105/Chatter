@@ -146,3 +146,5 @@ Home Page - Landing Page
 
 
 ESLint with node_modules/.bin/eslint */
+
+Plz dont run w/ IE.

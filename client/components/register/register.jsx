@@ -27,6 +27,10 @@ export default class Register extends React.Component {
       this.setState({
           errorMessage: 'Passwords do not match'
         });
+    } else if (refs.password1.value.length < 8) {
+      this.setState({
+        errorMessage: 'Passwords must be at least 8 characters long'
+      });
     } else {
       axios.post('/register', {
         username: refs.username.value, password: refs.password1.value,
@@ -67,7 +71,7 @@ export default class Register extends React.Component {
                     <i className='fas fa-lock'></i>
                   </label>
                 </div>
-                <input id='input-group-password' type='text' placeholder='Password' ref='password1'/>
+                <input id='input-group-password' type='password' placeholder='Password' ref='password1'/>
               </div>
             </div>
             <div className='form-group'>
@@ -77,7 +81,7 @@ export default class Register extends React.Component {
                     <i className='fas fa-unlock'></i>
                   </label>
                 </div>
-                <input id='input-group-password-confirmation' type='text' placeholder='Password Confirmation' ref='password2'/>
+                <input id='input-group-password-confirmation' type='password' placeholder='Password Confirmation' ref='password2'/>
               </div>
             </div>
             <div className='form-group'>
@@ -87,7 +91,7 @@ export default class Register extends React.Component {
                     <i className='fas fa-envelope'></i>
                   </label>
                 </div>
-                <input id='input-group-email' type='text' placeholder='Email' ref='email'/>
+                <input id='input-group-email' type='email' placeholder='Email' ref='email'/>
               </div>
             </div>
             <div className='form-group'>
