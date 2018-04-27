@@ -6,12 +6,9 @@ const Privateroom = mongoose.model('Privateroom');
 
 module.exports = io => {
     io.on('connection', socket=> {
-        console.log('Connected');
         socket.on('disconnect', ()=> {
             console.log('Disconnected User');
         });
-        
-        console.log(io.engine.clientsCount);
 
         //Counts total online users
         socket.on('getClientTotal', ()=> {
@@ -32,11 +29,7 @@ module.exports = io => {
             
             Chatroom.update({id: roomID}, {$push: {messages: message}},
             (err)=> {
-                if (err) {
-                    console.log(err);
-                } else {
-                    io.sockets.emit('group-send', message);
-                }
+                (err) ? console.log(err) : io.sockets.emit('group-send', message);
             });
         });
         
@@ -51,11 +44,7 @@ module.exports = io => {
             };
             Privateroom.update({users: {$all: [username, selectedUser]}}, {$push: {messages: message}},
             (err)=> {
-                if (err) {
-                    console.log(err);
-                } else {
-                    io.sockets.emit('direct-send', data);
-                }
+                (err) ? console.log(err) : io.sockets.emit('direct-send', data);
             });
         });
     });

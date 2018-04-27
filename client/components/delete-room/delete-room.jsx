@@ -46,7 +46,10 @@ export default class DeleteRoom extends React.Component {
 	render() {
 		return(
 			<div id='rm-deleter'>
-				<button type='button' data-toggle='modal' data-target='#delete-room' className='bttn-bordered bttn-md bttn-default bttn-no-outline'>Delete A Room</button>
+				<button type='button' data-toggle='modal' data-target='#delete-room' className='bttn-bordered bttn-md bttn-default bttn-no-outline'>
+					Delete A Room&nbsp;
+					<i className="far fa-minus-square"></i>
+				</button>
 				<div className='modal animated zoomIn' id='delete-room' tabIndex='-1' role='dialog' aria-labelledby='delete-room-label' aria-hidden='true'>
 					<div className='modal-dialog' role='document'>
 						<div className='modal-content'>

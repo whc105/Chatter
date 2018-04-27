@@ -5,7 +5,6 @@ import './leave-room.css';
 export default class LeaveRoom extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = {};
 		this.handleClick = this.handleClick.bind(this);
 	}
 	

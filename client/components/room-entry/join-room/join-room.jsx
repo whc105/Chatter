@@ -5,7 +5,6 @@ import './join-room.css';
 export default class JoinRoom extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = {};
 		this.handleClick = this.handleClick.bind(this);
 	}
 	

@@ -11,7 +11,7 @@ export default class Home extends React.Component {
     return ( 
       <div className='content'>
         <CurrentUsers/>
-        <div id='intro-content'>
+        <div id='intro-content' className='animated fadeInDownBig'>
           <span className='welcome-title'>Welcome to Chatter </span>
           <br/>
           <br/>

@@ -29,7 +29,10 @@ export default class Chat extends React.Component {
 		const deleteRoom = (permission === 1) ? <DeleteRoom/> : <div></div>;
 		const linkKey = (permission === 1) ? (
 			<Link to='/key'>
-				<button className='bttn-bordered bttn-md bttn-default'>Key</button>
+				<button className='bttn-bordered bttn-md bttn-default'>
+					Key&nbsp;
+					<i className="fab fa-keycdn"></i>
+				</button>
 			</Link>) : <div></div>;
 		return (
 			<div>
