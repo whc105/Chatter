@@ -23,7 +23,15 @@ export default class Register extends React.Component {
   
   register() {
     const refs = this.refs;
-    if (refs.password1.value !== refs.password2.value) {
+    if (refs.username.value === '') {
+      this.setState({
+        errorMessage: 'Please Enter An Username'
+      });
+    } else if (refs.email.value === '') {
+      this.setState({
+        errorMessage: 'Please Enter An Email'
+      });
+    } else if (refs.password1.value !== refs.password2.value) {
       this.setState({
           errorMessage: 'Passwords do not match'
         });

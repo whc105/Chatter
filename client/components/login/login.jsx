@@ -50,7 +50,7 @@ export default class Login extends React.Component {
                     <i className='fas fa-user'></i>
                   </label>
                 </div>
-                <input id='input-group-user' type='text' placeholder='Username' name='username' ref='username'/>
+                <input id='input-group-user' type='text' placeholder='Username' name='username' ref='username' required/>
               </div>
             </div>
             <div className='form-group'>
@@ -60,7 +60,7 @@ export default class Login extends React.Component {
                     <i className='fas fa-lock'></i>
                   </label>
                 </div>
-                <input id='input-group-password' type='password' placeholder='Password' name='password' ref='password'/>
+                <input id='input-group-password' type='password' placeholder='Password' name='password' ref='password' required/>
               </div>
             </div>
             <button type='button' onClick={this.login} className='btn btn-primary'>Login</button>
