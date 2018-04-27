@@ -38,7 +38,7 @@ export default class Key extends React.Component {
 				roomID: this.state.selectedRoom.id,
 				keyVal: this.refs.key.value
 			}).then(({data})=> {
-				console.log(data);
+				window.location = '/key';
 			});
 		}
 	}
