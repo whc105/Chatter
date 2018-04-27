@@ -7,10 +7,18 @@ export default class Key extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			selectedRoom: undefined
+			selectedRoom: undefined,
+			keys: []
 		};
 		this.selectedRoom = this.selectedRoom.bind(this);
 		this.createKey = this.createKey.bind(this);
+	}
+	
+	componentDidMount() {
+		axios.get('/api/getUserKeys')
+		.then(({data})=> {
+			this.setState({keys: data});
+		});
 	}
 	
 	//Selected Room in dropdown gets sent here
@@ -33,12 +41,23 @@ export default class Key extends React.Component {
 				console.log(data);
 			});
 		}
-		
+	}
+	
+	displayKeys(data) {
+		return data.map((elem)=> {
+			return (
+				<li className='list-group-item' key={elem.type}>
+					<div>Key: {elem.key}</div>
+					<div>RoomID: {elem.type}</div>
+					<div>Uses: {elem.uses}</div>
+				</li>
+			);
+		});
 	}
 	
 	render() {
 		const room = (this.state.selectedRoom) ? this.state.selectedRoom.name : 'Please Select A Room';
-		
+		const userKeys = this.displayKeys(this.state.keys);
 		return (
 			<div>
 				<div id='header'>
@@ -51,6 +70,10 @@ export default class Key extends React.Component {
 						<input className='input is-rounded' id='key-amount' type='number' placeholder='Number of Keys to Generate' ref='key'/>
 					</div>
 					<button onClick={this.createKey} className='bttn-bordered bttn-md bttn-default bttn-no-outline'>Create Keys</button>
+					<br/>
+					<ul className='list-group'>
+						{userKeys}
+					</ul>
 				</div>
 				<div id='room-search'>
 					<RoomSearch selectedRoom={this.selectedRoom} type='select'/>

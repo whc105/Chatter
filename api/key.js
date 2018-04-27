@@ -25,4 +25,20 @@ module.exports = app => {
             }
         });
     });
+    
+    app.get('/api/getUserKeys', (req, res)=> {
+        const user = req.user.username;
+        Chatroom.find({createdBy: user}, {_id: 0, id: 1}, (err, result)=> {
+            if (err) {
+                res.send(err);
+            } else {
+                const mappedResult = result.map((elem)=> {
+                    return elem.id;
+                });
+                Key.find({type: {$in: mappedResult}}, (err, keys)=> {
+                    (err) ? res.send(err) : res.send(keys);
+                });
+            }
+        });
+    });
 };

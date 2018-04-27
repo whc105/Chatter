@@ -3,11 +3,20 @@ const mongoose = require('mongoose');
 require('../db');
 const Chatroom = mongoose.model('Chatroom');
 const Privateroom = mongoose.model('Privateroom');
+const User = mongoose.model('User');
 
 module.exports = app => {
     app.get('/api/getAllMessages/:roomID', (req, res)=> {
-        Chatroom.findOne({id: req.params.roomID}, {_id: 0, messages: 1}, (err, messages)=> {
-            (err) ? console.log(err) : res.send(messages);
+        User.findOne({username: req.user.username}, (err, result)=> {
+            if (err) {
+                console.log(err);
+            } else {
+                if (result.chatrooms.includes(parseInt(req.params.roomID, 10))) {
+                    Chatroom.findOne({id: req.params.roomID}, {_id: 0, messages: 1}, (err, messages)=> {
+                        (err) ? console.log(err) : res.send(messages);
+                    });
+                }
+            }
         });
     });
     
