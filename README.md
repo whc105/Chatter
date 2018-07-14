@@ -111,31 +111,6 @@ Home Page - Landing Page
 6. As an administrator, I can create keys for users to gain access to rooms.
 7. As an administrator, I can create chatrooms.
 
-## Research Topics
-
-* (2 points) Bootstrap 4
-    * Bootstrap is a CSS Framework that will help speed up the front-end design building process.
-    * I am using Bootstrap because it has several components already designed so I do not have to build them myself.
-    * I will also be using addons to the default Bootstrap 4 to further customize my app.
-    * This will help with the general design of my web app.
-    * I give it 2 points because it is a popular CSS Framework. Also, I will include some configurations to it.
-* (5 points) ReactJS
-    * React JS is a front-end Javascript framework that allows web components to be seperated from the webpage.
-    * I am using React because I want the ability to reuse components and modify them without worrying about breaking the page.
-    * I give it 4 points because it is a popular front-end framework that is moderately difficult to pick up.
-* (4 Points) Passport JS User Authentication
-    * Passport JS is an user authentication middleware. It can authenticate users locally or through a service like Facebook or Google.
-    * I will be using passport JS to locally authenticate users.
-    * I will also be using passport JS to authenticate users via Google Login (instead of local login).
-    * I give it 4 points because I will be using local authentication along with Google.
-* (4 Points) Socket IO
-    * Socket IO is a real-time library. It will enable server side responses.
-    * I will use Socket IO for the live chat system.
-    * I will give it 4 points because it seems like a moderately tough system to implement.
-      * Furthermore, I think I need to move my database to MLab and include a live demo chat system (with Bots that say lorem ipsums).
-
-15 points total out of 8 required points.
-
 ## [Initial Main Project File](app.js) 
 
 ## Annotations / References Used
